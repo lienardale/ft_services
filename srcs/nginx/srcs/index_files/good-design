@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html
+  lang="en-US"
+  dir="ltr"
+  class="">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Dieter Rams’s ten principles for good design (sometimes referred to as the ‘Ten commandments’)." />
+<meta name="twitter:site" content="@vitsoe" />
+<meta name="twitter:creator" content="@vitsoe" />
+<meta name="twitter:title" content="Good design | About us | Vitsœ" />
+<meta name="twitter:description" content="Dieter Rams’s ten principles for good design (sometimes referred to as the ‘Ten commandments’)." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/1050.jpg" />
+<meta name="msapplication-TileImage" content="https://d2lsod3xpjaepj.cloudfront.net/assets/aee31d1/images/hand-144.png" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png" />
+<link color="#e4312a" rel="mask-icon" href="/mask-icon.svg" />
+<link rel="stylesheet" type="text/css" href="https://d2lsod3xpjaepj.cloudfront.net/assets/aee31d1/css/screen-responsive.css" />
+<script type="text/javascript" src="https://d2lsod3xpjaepj.cloudfront.net/assets/aee31d1/js/application.min.js"></script>
+<title>Good design | About us | Vitsœ</title>
+<!--[if lt IE 9]>
+	<script src="https://d2lsod3xpjaepj.cloudfront.net/bower_components/html5shiv/dist/html5shiv.js"></script>
+	<script src="https://d2lsod3xpjaepj.cloudfront.net/bower_components/REM-unit-polyfill/js/rem.min.js"></script>
+	<script type="text/javascript"
+		src="https://d2lsod3xpjaepj.cloudfront.net/bower_components/respond/dest/respond.min.js">
+	</script>
+	<link
+		href="https://d2lsod3xpjaepj.cloudfront.net/bower_components/respond/cross-domain/respond-proxy.html"
+		id="respond-proxy" rel="respond-proxy" />
+	<link
+		href="/bower_components/respond/cross-domain/respond.proxy.gif"
+		id="respond-redirect" rel="respond-redirect" />
+	<script
+		src="https://d2lsod3xpjaepj.cloudfront.net/bower_components/respond/cross-domain/respond.proxy.js">
+	</script>
+	<script
+		src="https://d2lsod3xpjaepj.cloudfront.net/bower_components/selectivizr/selectivizr.js">
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://d2lsod3xpjaepj.cloudfront.net/assets/aee31d1/css/ie.css" />
+<![endif]-->
+</head>
+
+<body class="us">
+
+
+<header>
+	<div class="nav-fixed">
+		<a class="logo ddr" href="/us">Vitsœ</a>		<button class="button-menu-mobile">
+			<div></div>
+			<div></div>
+			<div></div>
+		</button>
+	</div>
+
+	<div class="nav-vertical">
+		<nav class="nav-primary">
+			<ul class="menu-primary" id="topnavul">
+<li class=" primary-item"><a href="/us">Home</a></li>
+<li class=" primary-item selected"><a href="/us/about">About us</a>
+<ul class="submenu">
+<li><a href="/us/about">Introduction</a></li>
+<li><a href="/us/about/ethos">Ethos</a></li>
+<li><a href="/us/about/history">History</a></li>
+<li><a href="/us/about/dieter-rams">Dieter Rams</a></li>
+<li class="active"><a href="/us/about/good-design">Good design</a></li>
+</ul>
+</li>
+<li class=" primary-item"><a href="/us/606">606 Universal Shelving System</a>
+<ul class="submenu">
+<li><a href="/us/606">Introduction</a></li>
+<li><a href="/us/606/gallery">Gallery</a></li>
+<li><a href="/us/606/structures">Structure</a></li>
+<li><a href="/us/606/components">Shelves and prices</a></li>
+<li><a class="inquiry" href="/us/606/inquiry">How to buy</a></li>
+</ul>
+</li>
+<li class=" primary-item"><a href="/us/620">620 Chair Programme</a>
+<ul class="submenu">
+<li><a href="/us/620">Introduction</a></li>
+<li><a href="/us/620/gallery">Gallery and story</a></li>
+<li><a href="/us/620/details">Details</a></li>
+<li><a class="inquiry" href="/us/620/buy">Configure and buy</a></li>
+</ul>
+</li>
+<li class=" primary-item"><a href="/us/621">621 Table</a>
+<ul class="submenu">
+<li><a class="inquiry" href="/us/621">Buy</a></li>
+<li><a href="/us/621/details">Design and details</a></li>
+</ul>
+</li>
+</ul>			<div class="mobile-hide headerbasket-container">
+							</div>
+		</nav>
+		<nav class="nav-service">
+			<div class="searchButton open-form">Search</div>
+			<ul class="menu-service" id="headernavul">
+<li class="locale-item"><a href="#"><span class="locale-flag us"></span>
+						<i class="locale-button"></i></a></li>
+<li class="login-item"><a href="/us/login">Log in to My Vitsœ</a></li>
+<li><a href="/us/contactus">Contact us</a></li>
+<li><a href="/us/locations">Locations</a></li>
+<li><a href="/us/voice">Editorial</a></li>
+<li><a href="/us/careers">Careers</a></li>
+<li id="switchlocale" title="Choose your region / language"><span title="Choose your region / language"><select name="locale-switcher"><option data-class="gb" value="/gb/about/good-design">United Kingdom</option><option data-class="de" value="/de/ueber-vitsoe/gutes-design">Deutschland / Österreich / Schweiz</option><option data-class="us" value="/us/about/good-design" selected="true">United States of America / Canada</option><option data-class="jp" value="/jp/about/good-design">日本</option><option data-class="eu" value="/eu/about/good-design">Europe</option><option data-class="rw" value="/rw/about/good-design">Rest of World</option></select></span></li>
+</ul>			<div class="search-container">
+				<button class="search-close">Close</button>
+				<form class="searchForm" action="/us/search" method="GET"><input class="search" placeholder="Search" type="search" value="" name="q" id="q" /><input class="searchButton" type="submit" name="yt0" value="Search" /></form>			</div>
+		</nav>
+	</div>
+	<div class="desktop-hide headerbasket-container">
+			</div>
+				<nav class="nav-secondary"><div>
+			<ul id="subnavul">
+<li><a href="/us/about">Introduction</a></li>
+<li><a href="/us/about/ethos">Ethos</a></li>
+<li><a href="/us/about/history">History</a></li>
+<li><a href="/us/about/dieter-rams">Dieter Rams</a></li>
+<li class="active"><a href="/us/about/good-design">Good design</a></li>
+</ul></div></nav>
+		</header>
+
+<div class="modal basket" style="display: none">
+	<div class="bg"><div></div></div>
+
+	<div class="basket-container">
+			</div>
+</div>
+
+			<div class="notification">
+				<div class="container">
+					<div class="notification-icon">
+						<div class="icon icon-info-circle"></div>
+					</div>
+					<div class="notification-content">
+						<p>Should you be on our EU site?</p><a class="btn btn-level3 icon btn-arrow" href="/eu/about/good-design">EU site</a>					</div>
+					<button class="notification-close icon icon-close" onclick="ignoreLocale()">Dismiss</button>
+				</div>
+			</div>
+		
+<main role="main">
+	<div class="page-header">
+	<h1>The power of good design</h1>
+			<div class="intro-text"><span>Dieter Rams’s ideology, engrained within Vitsœ</span></div>
+	</div>
+	<div id="content" class="cf">
+		
+
+<div class="container">
+
+		<div class="introductions margin-above margin-below-2">
+
+			<div class="introductions-title">
+				
+					<h2>Good design at Vitsœ</h2>
+				
+			</div>
+			<div class="introductions-media">
+				<figure>
+					<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 2100px, (min-width: 1060px) and (min-resolution: 1.9) 2100px, (min-width: 2120px) 2100px, (min-width: 1060px) 1050px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/1050.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/1920.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/2880.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1704/crop169/1050.jpg" alt="Dieter Rams’s furniture for Vitsœ is inspired by his ten principles for good design" />
+					<figcaption></figcaption>
+				</figure>
+			</div>
+			<div class="introductions-content">
+				<p>Here at Vitsœ we stand for the inordinate power of good design in everything we do: designing thoughtfully, responsibly and intelligently for our company, our furniture and the many people who share a profound interest in all of our tomorrows.</p>
+
+<p>For over 60 years, Vitsœ has worked continuously with Dieter Rams. He still improves his designs to this day and is often cited by a new generation as a key influence on their work that is shaping the 21st century.</p>
+
+			</div>
+		</div>
+
+		<div class="quote margin-below">
+			<div class="quote-content">
+				<div class="quote-text"><p>“In 1957 I began to develop a storage system that formed the basis of the company Vitsœ, which was founded in 1959. Thus the ideology behind my design is engrained within the company.”</p>
+</div>
+				<div class="quote-author">
+					<div class="quote-author-title">Dieter Rams</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="text-block-title">
+				<h2>Ten principles for good design</h2>
+			</div>
+			<div class="text-block-content margin-below">
+				<p>Back in the late 1970s, Dieter Rams was becoming increasingly concerned by the state of the world around him: “An impenetrable confusion of forms, colours and noises.”</p>
+
+<p>Aware that he was a significant contributor to that world, he asked himself an important question: is my design good design?</p>
+
+<p>His answer is expressed in his ten principles for good design.</p>
+
+			</div>
+			<figure class="text-block-primary-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 1420px, (min-width: 1060px) and (min-resolution: 1.9) 1420px, (min-width: 2120px) 1420px, (min-width: 1060px) 710px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/1050.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/1050.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/1050.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1328/crop169/710.jpg" alt="Vitsœ’s designer, Dieter Rams" />
+				<figcaption>
+					Vitsœ’s designer, Dieter Rams. Photograph by Abisag Tüllmann
+					
+				</figcaption>
+			</figure>
+		</div>
+
+		<div class="border-above principle">
+			<div class="principle-number extra-indent">1</div>
+			<div class="principle-content">
+				<h2>Good design is innovative</h2>
+				<p>The possibilities for innovation are not, by any means, exhausted. Technological development is always offering new opportunities for innovative design. But innovative design always develops in tandem with innovative technology, and can never be an end in itself.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/139/crops/410.jpg" alt="" />
+				<figcaption>TP 1 radio/phono combination, 1959, by Dieter Rams for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">2</div>
+			<div class="principle-content">
+				<h2>Good design makes a product useful</h2>
+				<p>A product is bought to be used. It has to satisfy certain criteria, not only functional, but also psychological and aesthetic. Good design emphasizes the usefulness of a product whilst disregarding anything that could possibly detract from it.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/140/crops/410.jpg" alt="" />
+				<figcaption>MPZ 21 multipress citrus juicer, 1972, by Dieter Rams and Jürgen Greubel for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">3</div>
+			<div class="principle-content">
+				<h2>Good design is aesthetic</h2>
+				<p>The aesthetic quality of a product is integral to its usefulness because products we use every day affect our person and our well-being. But only well-executed objects can be beautiful.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/141/crops/410.jpg" alt="" />
+				<figcaption>RT 20 tischsuper radio, 1961, by Dieter Rams for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">4</div>
+			<div class="principle-content">
+				<h2>Good design makes a product understandable</h2>
+				<p>It clarifies the product’s structure. Better still, it can make the product talk. At best, it is self-explanatory.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/142/crops/410.jpg" alt="" />
+				<figcaption>T 1000 world receiver, 1963, by Dieter Rams for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">5</div>
+			<div class="principle-content">
+				<h2>Good design is unobtrusive</h2>
+				<p>Products fulfilling a purpose are like tools. They are neither decorative objects nor works of art. Their design should therefore be both neutral and restrained, to leave room for the user’s self-expression.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/143/crops/410.jpg" alt="" />
+				<figcaption>Cylindric T 2 lighter, 1968, by Dieter Rams for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">6</div>
+			<div class="principle-content">
+				<h2>Good design is honest</h2>
+				<p>It does not make a product more innovative, powerful or valuable than it really is. It does not attempt to manipulate the consumer with promises that cannot be kept.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/144/crops/410.jpg" alt="" />
+				<figcaption>L 450 flat loudspeaker, TG 60 reel-to-reel tape recorder and TS 45 control unit, 1962-64, by Dieter Rams for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">7</div>
+			<div class="principle-content">
+				<h2>Good design is long-lasting</h2>
+				<p>It avoids being fashionable and therefore never appears antiquated. Unlike fashionable design, it lasts many years – even in today’s throwaway society.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<a href="/us/620"><img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 340px, (min-width: 1060px) and (min-resolution: 1.9) 340px, (min-width: 2120px) 340px, (min-width: 1060px) 170px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/170.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/170.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/170.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/170.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/170.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/297/crops/170.jpg" alt="" /></a>
+				<figcaption><a href="/us/620">620 Chair Program</a>, 1962, by Dieter Rams for Vitsœ</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">8</div>
+			<div class="principle-content">
+				<h2>Good design is thorough down to the last detail</h2>
+				<p>Nothing must be arbitrary or left to chance. Care and accuracy in the design process show respect towards the user.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/145/crops/410.jpg" alt="" />
+				<figcaption>ET 66 calculator, 1987, by Dietrich Lubs for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number">9</div>
+			<div class="principle-content">
+				<h2>Good design is environmentally-friendly</h2>
+				<p>Design makes an important contribution to the preservation of the environment. It conserves resources and minimizes physical and visual pollution throughout the lifecycle of the product.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<a href="/us/606"><img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/148/crops/410.jpg" alt="" /></a>
+				<figcaption><a href="/us/606">606 Universal Shelving System</a>, 1960, by Dieter Rams for Vitsœ</figcaption>
+			</figure>
+		</div>
+
+		<div class="principle">
+			<div class="principle-number extra-indent">10</div>
+			<div class="principle-content">
+				<h2>Good design is as little design as possible</h2>
+				<p>Less, but better – because it concentrates on the essential aspects, and the products are not burdened with non-essentials.</p>
+
+<p>Back to purity, back to simplicity.</p>
+
+				
+			</div>
+			<figure class="principle-image">
+				<img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/710.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/710.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/710.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/149/crops/410.jpg" alt="" />
+				<figcaption>L 2 speaker, 1958, by Dieter Rams for Braun</figcaption>
+			</figure>
+		</div>
+
+		<div class="text-block">
+			<div class="text-block-title">&nbsp;</div>
+			<div class="margin-below text-block-content">
+				These principles can be shared accurately and fairly under the Creative Commons CC-BY-NC-ND 4.0 licence.
+				<div class="margin-above">
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+						<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="promo-primary-12-text margin-below-3">
+			   <h2 class="promo-header promo-left-wrapper">Subscribe to our occasional newsletter</h2>
+			<div class="promo-right-wrapper">
+				<p>You will only hear from us when we have something of interest to share.</p>
+
+				<div class="margin-below">
+					<a class="btn btn-level3 icon btn-angle" href="/us/newsletter">Subscribe</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="products">
+			<div class="product">
+				<div class="product-image"><a href="http://www.vitsoe.com/us/606"><img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/410.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/410.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/410.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/410.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/740/crops/410.jpg" alt="606 Universal Shelving System" /></a></div>
+				<div class="product-content">
+					<a href="/us/606" class="btn btn-level3 icon btn-arrow">
+						606 Universal Shelving System
+					</a>
+					<p>Start small. Add to it. Take it with you when you move.</p>
+
+				</div>
+			</div>
+			<div class="product">
+				<div class="product-image"><a href="http://www.vitsoe.com/us/620"><img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/1050.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/1050.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/1050.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/457/crops/410.jpg" alt="620 Chair Programme" /></a></div>
+				<div class="product-content">
+					<a href="/us/620" class="btn btn-level3 icon btn-arrow">
+						620 Chair Programme
+					</a>
+					<p>Start with a single chair. Add another to make a sofa.</p>
+
+				</div>
+			</div>
+			<div class="product">
+				<div class="product-image"><a href="http://www.vitsoe.com/us/621"><img sizes="(min-width: 1060px) and (-webkit-min-device-pixel-ratio: 1.9) 820px, (min-width: 1060px) and (min-resolution: 1.9) 820px, (min-width: 2120px) 820px, (min-width: 1060px) 410px, 100vw" srcset="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/50.jpg 50w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/170.jpg 170w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/410.jpg 410w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/710.jpg 710w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/1050.jpg 1050w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/1920.jpg 1920w, https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/2880.jpg 2880w" src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1084/crops/410.jpg" alt="621 Side Table" /></a></div>
+				<div class="product-content">
+					<a href="/us/621" class="btn btn-level3 icon btn-arrow">
+						621 Side Table
+					</a>
+					<p>Surprisingly useful, on its own or as a pair.</p>
+
+				</div>
+			</div>
+		</div>
+
+		
+
+	</div>
+
+		</div>
+</main>
+
+
+<footer class="cf" data-name="footer">
+	<div class="container">
+		<a class="back-to-top icon-before icon-arrow-up-before" href="#top">Back to top</a>		<div class="footermenu sitemap"><ul id="yw0">
+<li><a href="/us/specify">Specifying Vitsœ</a></li>
+<li><a href="/us/brochures">Brochures, prices and samples</a></li>
+<li><a href="/us/newsletter">Newsletter</a></li>
+<li><a href="/us/privacy">Privacy policy</a></li>
+<li><a href="/us/help">Payments, delivery &amp; returns</a></li>
+<li><a href="/us/terms-and-conditions">Terms and conditions</a></li>
+<li><a href="/us/honest-pricing">Honest pricing</a></li>
+</ul></div><div class="footermenu social"><h3>Find us on</h3><ul class="social-list" id="yw1">
+<li><a class="icon-before icon-instagram-before" href="https://www.instagram.com/vitsoe/">Instagram</a></li>
+<li><a class="icon-before icon-pinterest-before" href="https://www.pinterest.co.uk/vitsoe/">Pinterest</a></li>
+<li><a class="icon-before icon-twitter-before" href="https://twitter.com/vitsoe">Twitter</a></li>
+<li><a class="icon-before icon-facebook-before" href="https://www.facebook.com/vitsoe">Facebook</a></li>
+</ul></div>	</div>
+	<div class="copyright"><div>© 2020 Vitsœ</div></div></footer>
+
+
+<span data-translation="Close" data-translation-word="modal"></span>
+<span data-translation="Full view" data-translation-word="gallery"></span>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document, "script","//www.google-analytics.com/analytics.js","ga");
+		
+
+			ga("create", "UA-184993-1", "auto");
+			ga("send", {
+				hitType: "pageview",
+				title: "Good design | About us | Vitsœ"
+			});
+			
+/*]]>*/
+</script>
+</body>
+</html>

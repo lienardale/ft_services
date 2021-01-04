@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin-deploy
+spec:
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: phpmyadmin
+        image: monphpmyadmin:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+          name: php-port
+        livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep php'
+          initialDelaySeconds: 10
+          periodSeconds: 5

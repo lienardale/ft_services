@@ -1,0 +1,71 @@
+Sending build context to Docker daemon  91.14kB
+Step 1/8 : FROM alpine:latest
+latest: Pulling from library/alpine
+188c0c94c7c5: Pulling fs layer
+188c0c94c7c5: Verifying Checksum
+188c0c94c7c5: Download complete
+188c0c94c7c5: Pull complete
+Digest: sha256:c0e9560cda118f9ec63ddefb4a173a2b2a0347082d7dff7dc14272e7841a5b5a
+Status: Downloaded newer image for alpine:latest
+ ---> d6e46aa2470d
+Step 2/8 : COPY srcs/* srcs/
+ ---> fa963a01f7ce
+Step 3/8 : RUN apk update 	&& apk upgrade 	&& apk add nginx 	&& apk add openssl openssh
+ ---> Running in fcf0a4559d55
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.1-67-ge0f25e8e68 [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.1-65-gda4c4bae78 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12746 distinct packages available
+(1/2) Upgrading musl (1.1.24-r9 -> 1.1.24-r10)
+(2/2) Upgrading musl-utils (1.1.24-r9 -> 1.1.24-r10)
+Executing busybox-1.31.1-r19.trigger
+OK: 6 MiB in 14 packages
+(1/2) Installing pcre (8.44-r0)
+(2/2) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+Executing busybox-1.31.1-r19.trigger
+OK: 7 MiB in 16 packages
+(1/10) Installing openssh-keygen (8.3_p1-r0)
+(2/10) Installing ncurses-terminfo-base (6.2_p20200523-r0)
+(3/10) Installing ncurses-libs (6.2_p20200523-r0)
+(4/10) Installing libedit (20191231.3.1-r0)
+(5/10) Installing openssh-client (8.3_p1-r0)
+(6/10) Installing openssh-sftp-server (8.3_p1-r0)
+(7/10) Installing openssh-server-common (8.3_p1-r0)
+(8/10) Installing openssh-server (8.3_p1-r0)
+(9/10) Installing openssh (8.3_p1-r0)
+(10/10) Installing openssl (1.1.1g-r0)
+Executing busybox-1.31.1-r19.trigger
+OK: 14 MiB in 26 packages
+Removing intermediate container fcf0a4559d55
+ ---> 804abb00383d
+Step 4/8 : RUN mkdir -p /run/nginx www && 	cp srcs/nginx.conf /etc/nginx/conf.d/default.conf && 	mv srcs/index.html /www/ &&     mv srcs/run.sh . &&     chmod 755 run.sh
+ ---> Running in 4cc007ae5ffa
+Removing intermediate container 4cc007ae5ffa
+ ---> f98e596db80b
+Step 5/8 : RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=Federation/CN=localhost" 	-keyout /etc/ssl/private/ssl.key -out /etc/ssl/certs/ssl.crt
+ ---> Running in 3e986d55a0f4
+[91mGenerating a RSA private key
+[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m+[0m[91m+[0m[91m+[0m[91m+[0m[91m+
+[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m...[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m+[0m[91m+[0m[91m+[0m[91m+[0m[91m+
+[0m[91mwriting new private key to '/etc/ssl/private/ssl.key'
+[0m[91m-----
+[0mRemoving intermediate container 3e986d55a0f4
+ ---> c0a7f7fc00b6
+Step 6/8 : RUN ssh-keygen -A && adduser -D ssh_admin && echo "ssh_admin:0101" | chpasswd
+ ---> Running in 9e128458f463
+ssh-keygen: generating new host keys: RSA DSA ECDSA ED25519 
+[91mchpasswd: password for 'ssh_admin' changed
+[0mRemoving intermediate container 9e128458f463
+ ---> 141291fb027d
+Step 7/8 : EXPOSE 80 443 22
+ ---> Running in 7b4dde7d0971
+Removing intermediate container 7b4dde7d0971
+ ---> 536e2e05df70
+Step 8/8 : CMD ./run.sh
+ ---> Running in fc11d0371464
+Removing intermediate container fc11d0371464
+ ---> 24aeee8cc549
+Successfully built 24aeee8cc549
+Successfully tagged monnginx:latest

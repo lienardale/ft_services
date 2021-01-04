@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deploy
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: monmysql:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3306
+          name: sql-port
+        volumeMounts:
+        - name: mysql-vol
+          mountPath: /var/lib/mysql
+        livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep mysqld'
+          initialDelaySeconds: 10
+          periodSeconds: 5
+      volumes:
+      - name: mysql-vol
+        persistentVolumeClaim:
+          claimName: mysql-vol
