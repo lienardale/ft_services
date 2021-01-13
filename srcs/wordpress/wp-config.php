@@ -23,22 +23,19 @@
 define( 'DB_NAME', 'wordpress' );
 
 /** MySQL database username */
-define( 'DB_USER', 'wp_admin' );
+define( 'DB_USER', 'root' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '1010' );
+define( 'DB_PASSWORD', 'root' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mysql-svc' );
+define( 'DB_HOST', 'mysql-svc:3306' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
-
-/** [ADDED] Allow Wordpress to change files when updating */
-define( 'FS_METHOD', 'direct' );
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -49,14 +46,14 @@ define( 'FS_METHOD', 'direct' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
+define( 'AUTH_KEY',         'root' );
+define( 'SECURE_AUTH_KEY',  'root' );
+define( 'LOGGED_IN_KEY',    'root' );
+define( 'NONCE_KEY',        'root' );
+define( 'AUTH_SALT',        'root' );
+define( 'SECURE_AUTH_SALT', 'root' );
+define( 'LOGGED_IN_SALT',   'root' );
+define( 'NONCE_SALT',       'root' );
 
 /**#@-*/
 
@@ -86,7 +83,7 @@ define( 'WP_DEBUG', false );
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', __DIR__ . '/' );
+        define( 'ABSPATH', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */

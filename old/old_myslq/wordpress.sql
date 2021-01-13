@@ -2,7 +2,7 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql-service
+-- Host: mysql-svc
 -- Generation Time: Oct 09, 2020 at 07:11 PM
 -- Server version: 10.4.15-MariaDB
 -- PHP Version: 7.3.23
@@ -20,6 +20,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `wordpress`
 --
+-- CREATE DATABASE IF NOT EXISTS `wordpress` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+-- GRANT ALL PRIVILEGES on wordpress.* to 'wp_user'@'%' identified by '1010';
+-- FLUSH PRIVILEGES;
+-- USE `wordpress`;
 
 -- --------------------------------------------------------
 

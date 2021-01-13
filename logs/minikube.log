@@ -1,0 +1,20 @@
+* Deleting "minikube" in docker ...
+* Deleting container "minikube" ...
+* Removing /home/user42/.minikube/machines/minikube ...
+* Removed all traces of the "minikube" cluster.
+* minikube v1.13.1 on Ubuntu 18.04 (vbox/amd64)
+  - MINIKUBE_ACTIVE_DOCKERD=minikube
+* Using the docker driver based on user configuration
+* Starting control plane node minikube in cluster minikube
+* Creating docker container (CPUs=2, Memory=2200MB) ...
+* Preparing Kubernetes v1.19.2 on Docker 19.03.8 ...
+* Verifying Kubernetes components...
+* Enabled addons: default-storageclass, storage-provisioner
+* Done! kubectl is now configured to use "minikube" by default
+* The 'metrics-server' addon is enabled
+* Some dashboard features require the metrics-server addon. To enable all features please run:
+
+	minikube addons enable metrics-server	
+
+
+* The 'dashboard' addon is enabled

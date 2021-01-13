@@ -1,47 +1,57 @@
-Sending build context to Docker daemon  54.78kB
-Step 1/6 : FROM alpine:latest
- ---> d6e46aa2470d
-Step 2/6 : COPY init_file wordpress.sql my.cnf setup.sh ./
- ---> 2f2bd399ef9a
-Step 3/6 : RUN apk update && 	apk add --no-cache mysql mysql-client
- ---> Running in 145fefb790b1
+Sending build context to Docker daemon  562.2kB
+Step 1/9 : FROM alpine
+ ---> 389fef711851
+Step 2/9 : RUN apk update
+ ---> Running in 011cd59cf743
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
-v3.12.1-67-ge0f25e8e68 [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
-v3.12.1-65-gda4c4bae78 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+v3.12.3-54-gc2a303485f [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-54-gc2a303485f [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
 OK: 12746 distinct packages available
-fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
-fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
-(1/14) Installing mariadb-common (10.4.15-r0)
-(2/14) Installing libaio (0.3.112-r1)
-(3/14) Installing xz-libs (5.2.5-r0)
-(4/14) Installing ncurses-terminfo-base (6.2_p20200523-r0)
-(5/14) Installing ncurses-libs (6.2_p20200523-r0)
-(6/14) Installing linux-pam (1.3.1-r4)
-(7/14) Installing pcre (8.44-r0)
-(8/14) Installing libgcc (9.3.0-r2)
-(9/14) Installing libstdc++ (9.3.0-r2)
-(10/14) Installing libxml2 (2.9.10-r5)
-(11/14) Installing mariadb (10.4.15-r0)
+Removing intermediate container 011cd59cf743
+ ---> 95b521ee3d16
+Step 3/9 : RUN apk add mysql
+ ---> Running in 8274f5dd9ad9
+(1/12) Installing mariadb-common (10.4.15-r0)
+(2/12) Installing libaio (0.3.112-r1)
+(3/12) Installing xz-libs (5.2.5-r0)
+(4/12) Installing ncurses-terminfo-base (6.2_p20200523-r0)
+(5/12) Installing ncurses-libs (6.2_p20200523-r0)
+(6/12) Installing linux-pam (1.3.1-r4)
+(7/12) Installing pcre (8.44-r0)
+(8/12) Installing libgcc (9.3.0-r2)
+(9/12) Installing libstdc++ (9.3.0-r2)
+(10/12) Installing libxml2 (2.9.10-r5)
+(11/12) Installing mariadb (10.4.15-r0)
 Executing mariadb-10.4.15-r0.pre-install
-(12/14) Installing mysql (10.4.15-r0)
-(13/14) Installing mariadb-client (10.4.15-r0)
-(14/14) Installing mysql-client (10.4.15-r0)
+(12/12) Installing mysql (10.4.15-r0)
+Executing busybox-1.31.1-r19.trigger
+OK: 137 MiB in 26 packages
+Removing intermediate container 8274f5dd9ad9
+ ---> 88a70d572e7c
+Step 4/9 : RUN apk add mysql-client
+ ---> Running in 1c2c5e447793
+(1/2) Installing mariadb-client (10.4.15-r0)
+(2/2) Installing mysql-client (10.4.15-r0)
 Executing busybox-1.31.1-r19.trigger
 OK: 166 MiB in 28 packages
-Removing intermediate container 145fefb790b1
- ---> d7e7abaa3132
-Step 4/6 : RUN mkdir -p /run/mysqld && 	mv my.cnf /etc/
- ---> Running in 991d5686fd81
-Removing intermediate container 991d5686fd81
- ---> fe0969b40f50
-Step 5/6 : EXPOSE 3306
- ---> Running in a629ce9233c4
-Removing intermediate container a629ce9233c4
- ---> 44a25483eae8
-Step 6/6 : CMD ./setup.sh
- ---> Running in 4606b249f374
-Removing intermediate container 4606b249f374
- ---> e0feec5bc5e7
-Successfully built e0feec5bc5e7
+Removing intermediate container 1c2c5e447793
+ ---> 2cd401a14fa3
+Step 5/9 : RUN mkdir -p /run/mysqld
+ ---> Running in 86eaa1aec119
+Removing intermediate container 86eaa1aec119
+ ---> 76dde4688364
+Step 6/9 : COPY wp.sql /home/wp.sql
+ ---> ce522dc45bc0
+Step 7/9 : COPY entrypoint.sh /
+ ---> 03431ac6d651
+Step 8/9 : EXPOSE 3306
+ ---> Running in ff4184476e07
+Removing intermediate container ff4184476e07
+ ---> bad9f92e2847
+Step 9/9 : CMD sh entrypoint.sh
+ ---> Running in d9c9893d8468
+Removing intermediate container d9c9893d8468
+ ---> b20020fa7d33
+Successfully built b20020fa7d33
 Successfully tagged monmysql:latest

@@ -1,67 +1,214 @@
-Sending build context to Docker daemon  8.704kB
-Step 1/7 : FROM alpine:latest
- ---> d6e46aa2470d
-Step 2/7 : COPY wp-config.php setup.sh ./
- ---> 3bcc5fba28b8
-Step 3/7 : RUN apk update && 	apk add --no-cache php7 php7-fpm php7-opcache php7-gd php7-mysqli 	php7-zlib php7-curl php7-mbstring php7-json php7-session
- ---> Running in 358aa985226d
+Sending build context to Docker daemon  109.6kB
+Step 1/32 : FROM alpine:latest
+ ---> 389fef711851
+Step 2/32 : ENV PHP_FPM_USER="www"
+ ---> Running in 90ef8c1cc1d7
+Removing intermediate container 90ef8c1cc1d7
+ ---> 15f311093e5f
+Step 3/32 : ENV PHP_FPM_GROUP="www"
+ ---> Running in 00ae2cff5691
+Removing intermediate container 00ae2cff5691
+ ---> 065f78ce2e0d
+Step 4/32 : ENV PHP_FPM_LISTEN_MODE="0660"
+ ---> Running in 218a1b7a179f
+Removing intermediate container 218a1b7a179f
+ ---> 554b69673d11
+Step 5/32 : ENV PHP_MEMORY_LIMIT="512M"
+ ---> Running in c29de548262c
+Removing intermediate container c29de548262c
+ ---> 1b32a83cdf13
+Step 6/32 : ENV PHP_MAX_UPLOAD="50M"
+ ---> Running in 81e9f4f42c93
+Removing intermediate container 81e9f4f42c93
+ ---> 45b53f28e520
+Step 7/32 : ENV PHP_MAX_FILE_UPLOAD="200"
+ ---> Running in 36904dffc511
+Removing intermediate container 36904dffc511
+ ---> 066b0dccddd6
+Step 8/32 : ENV PHP_MAX_POST="100M"
+ ---> Running in 83c6fb771b22
+Removing intermediate container 83c6fb771b22
+ ---> 47070f77ca42
+Step 9/32 : ENV PHP_DISPLAY_ERRORS="On"
+ ---> Running in 4cf07e13da71
+Removing intermediate container 4cf07e13da71
+ ---> eb3efaea83e6
+Step 10/32 : ENV PHP_DISPLAY_STARTUP_ERRORS="On"
+ ---> Running in 01f922124c36
+Removing intermediate container 01f922124c36
+ ---> 905a31aef720
+Step 11/32 : ENV PHP_ERROR_REPORTING="E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR"
+ ---> Running in 9a1be02e56da
+Removing intermediate container 9a1be02e56da
+ ---> e5fe729230ac
+Step 12/32 : ENV PHP_CGI_FIX_PATHINFO=0
+ ---> Running in 9c972f822fb8
+Removing intermediate container 9c972f822fb8
+ ---> 767eb9e85861
+Step 13/32 : RUN adduser -D -g 'www' www
+ ---> Running in f534ffb128eb
+Removing intermediate container f534ffb128eb
+ ---> ac7260b4a681
+Step 14/32 : ADD php-fpm.conf .
+ ---> 87a03dd6b342
+Step 15/32 : ADD www.conf .
+ ---> 50584ffdce1f
+Step 16/32 : ADD php.ini .
+ ---> 9639bc09e168
+Step 17/32 : ADD entrypoint.sh .
+ ---> af9d1f3f3a2b
+Step 18/32 : ADD wp-config.php .
+ ---> 5c240fcb6f4e
+Step 19/32 : ADD liveness.sh .
+ ---> a1bc75e9e3c7
+Step 20/32 : RUN chmod 777 liveness.sh
+ ---> Running in a98bda49698b
+Removing intermediate container a98bda49698b
+ ---> db520607e3e5
+Step 21/32 : RUN chmod +x entrypoint.sh
+ ---> Running in 8c3d512810fb
+Removing intermediate container 8c3d512810fb
+ ---> 7b1f642b6363
+Step 22/32 : RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.11/community/" >> /etc/apk/repositories
+ ---> Running in 11cb91e92bdb
+Removing intermediate container 11cb91e92bdb
+ ---> 51a3aa07ebea
+Step 23/32 : RUN apk update
+ ---> Running in a0b9d89fa426
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
-v3.12.1-67-ge0f25e8e68 [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
-v3.12.1-65-gda4c4bae78 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
-OK: 12746 distinct packages available
-fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
-fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
-(1/39) Installing php7-common (7.3.25-r0)
-(2/39) Installing argon2-libs (20190702-r1)
-(3/39) Installing ncurses-terminfo-base (6.2_p20200523-r0)
-(4/39) Installing ncurses-libs (6.2_p20200523-r0)
-(5/39) Installing libedit (20191231.3.1-r0)
-(6/39) Installing pcre2 (10.35-r0)
-(7/39) Installing xz-libs (5.2.5-r0)
-(8/39) Installing libxml2 (2.9.10-r5)
-(9/39) Installing php7 (7.3.25-r0)
-(10/39) Installing ca-certificates (20191127-r4)
-(11/39) Installing nghttp2-libs (1.41.0-r0)
-(12/39) Installing libcurl (7.69.1-r1)
-(13/39) Installing php7-curl (7.3.25-r0)
-(14/39) Installing php7-fpm (7.3.25-r0)
-(15/39) Installing libxau (1.0.9-r0)
-(16/39) Installing libbsd (0.10.0-r0)
-(17/39) Installing libxdmcp (1.1.3-r0)
-(18/39) Installing libxcb (1.14-r1)
-(19/39) Installing libx11 (1.6.12-r0)
-(20/39) Installing libxext (1.3.4-r0)
-(21/39) Installing libice (1.0.10-r0)
-(22/39) Installing libuuid (2.35.2-r0)
-(23/39) Installing libsm (1.2.3-r0)
-(24/39) Installing libxt (1.2.0-r0)
-(25/39) Installing libxpm (3.5.13-r0)
-(26/39) Installing brotli-libs (1.0.9-r1)
-(27/39) Installing libbz2 (1.0.8-r1)
-(28/39) Installing libpng (1.6.37-r1)
-(29/39) Installing freetype (2.10.4-r0)
-(30/39) Installing libjpeg-turbo (2.0.5-r0)
-(31/39) Installing libwebp (1.1.0-r0)
-(32/39) Installing php7-gd (7.3.25-r0)
-(33/39) Installing php7-json (7.3.25-r0)
-(34/39) Installing php7-mbstring (7.3.25-r0)
-(35/39) Installing php7-openssl (7.3.25-r0)
-(36/39) Installing php7-mysqlnd (7.3.25-r0)
-(37/39) Installing php7-mysqli (7.3.25-r0)
-(38/39) Installing php7-opcache (7.3.25-r0)
-(39/39) Installing php7-session (7.3.25-r0)
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.11/community/x86_64/APKINDEX.tar.gz
+v3.12.3-54-gc2a303485f [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-54-gc2a303485f [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+v3.11.7 [http://dl-cdn.alpinelinux.org/alpine/v3.11/community/]
+OK: 18663 distinct packages available
+Removing intermediate container a0b9d89fa426
+ ---> 76a86eac246a
+Step 24/32 : RUN apk add nginx php7-fpm php7-mcrypt php7-soap php7-gmp     php7-pdo_odbc php7-json php7-dom php7-pdo php7-zip php7-mysqli     php7-sqlite3 php7-apcu php7-pdo_pgsql php7-bcmath php7-gd php7-odbc     php7-pdo_mysql php7-pdo_sqlite php7-gettext php7-xmlreader     php7-xmlrpc php7-bz2 php7-iconv php7-pdo_dblib php7-curl php7-ctype     php7-session php7-mbstring php7-dev php7-openssl php7-phar     && apk add openssl openssh
+ ---> Running in 12a6273bd777
+(1/87) Installing pcre (8.44-r0)
+(2/87) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+(3/87) Installing php7-common (7.3.26-r0)
+(4/87) Installing php7-pecl-apcu (5.1.19-r0)
+(5/87) Installing php7-bcmath (7.3.26-r0)
+(6/87) Installing libbz2 (1.0.8-r1)
+(7/87) Installing php7-bz2 (7.3.26-r0)
+(8/87) Installing php7-ctype (7.3.26-r0)
+(9/87) Installing ca-certificates (20191127-r4)
+(10/87) Installing nghttp2-libs (1.41.0-r0)
+(11/87) Installing libcurl (7.69.1-r3)
+(12/87) Installing php7-curl (7.3.26-r0)
+(13/87) Installing argon2-libs (20190702-r1)
+(14/87) Installing ncurses-terminfo-base (6.2_p20200523-r0)
+(15/87) Installing ncurses-libs (6.2_p20200523-r0)
+(16/87) Installing libedit (20191231.3.1-r0)
+(17/87) Installing pcre2 (10.35-r0)
+(18/87) Installing xz-libs (5.2.5-r0)
+(19/87) Installing libxml2 (2.9.10-r5)
+(20/87) Installing php7 (7.3.26-r0)
+(21/87) Installing m4 (1.4.18-r1)
+(22/87) Installing perl (5.30.3-r0)
+(23/87) Installing autoconf (2.69-r2)
+(24/87) Installing pkgconf (1.7.2-r0)
+(25/87) Installing ncurses-dev (6.2_p20200523-r0)
+(26/87) Installing libedit-dev (20191231.3.1-r0)
+(27/87) Installing zlib-dev (1.2.11-r3)
+(28/87) Installing libpcre2-16 (10.35-r0)
+(29/87) Installing libpcre2-32 (10.35-r0)
+(30/87) Installing pcre2-dev (10.35-r0)
+(31/87) Installing php7-static (7.3.26-r0)
+(32/87) Installing php7-dev (7.3.26-r0)
+(33/87) Installing php7-dom (7.3.26-r0)
+(34/87) Installing php7-fpm (7.3.26-r0)
+(35/87) Installing libxau (1.0.9-r0)
+(36/87) Installing libbsd (0.10.0-r0)
+(37/87) Installing libxdmcp (1.1.3-r0)
+(38/87) Installing libxcb (1.14-r1)
+(39/87) Installing libx11 (1.6.12-r0)
+(40/87) Installing libxext (1.3.4-r0)
+(41/87) Installing libice (1.0.10-r0)
+(42/87) Installing libuuid (2.35.2-r0)
+(43/87) Installing libsm (1.2.3-r0)
+(44/87) Installing libxt (1.2.0-r0)
+(45/87) Installing libxpm (3.5.13-r0)
+(46/87) Installing brotli-libs (1.0.9-r1)
+(47/87) Installing libpng (1.6.37-r1)
+(48/87) Installing freetype (2.10.4-r0)
+(49/87) Installing libjpeg-turbo (2.0.5-r0)
+(50/87) Installing libwebp (1.1.0-r0)
+(51/87) Installing php7-gd (7.3.26-r0)
+(52/87) Installing libintl (0.20.2-r0)
+(53/87) Installing php7-gettext (7.3.26-r0)
+(54/87) Installing gmp (6.2.0-r0)
+(55/87) Installing php7-gmp (7.3.26-r0)
+(56/87) Installing php7-iconv (7.3.26-r0)
+(57/87) Installing php7-json (7.3.26-r0)
+(58/87) Installing php7-mbstring (7.3.26-r0)
+(59/87) Installing libmcrypt (2.5.8-r8)
+(60/87) Installing php7-pecl-mcrypt (1.0.3-r0)
+(61/87) Installing php7-openssl (7.3.26-r0)
+(62/87) Installing php7-mysqlnd (7.3.26-r0)
+(63/87) Installing php7-mysqli (7.3.26-r0)
+(64/87) Installing readline (8.0.4-r0)
+(65/87) Installing unixodbc (2.3.7-r2)
+(66/87) Installing php7-odbc (7.3.26-r0)
+(67/87) Installing php7-pdo (7.3.26-r0)
+(68/87) Installing freetds (1.1.40-r0)
+(69/87) Installing php7-pdo_dblib (7.3.26-r0)
+(70/87) Installing php7-pdo_mysql (7.3.26-r0)
+(71/87) Installing php7-pdo_odbc (7.3.26-r0)
+(72/87) Installing db (5.3.28-r1)
+(73/87) Installing libsasl (2.1.27-r6)
+(74/87) Installing libldap (2.4.50-r1)
+(75/87) Installing libpq (12.5-r0)
+(76/87) Installing php7-pdo_pgsql (7.3.26-r0)
+(77/87) Installing sqlite-libs (3.32.1-r0)
+(78/87) Installing php7-pdo_sqlite (7.3.26-r0)
+(79/87) Installing php7-phar (7.3.26-r0)
+(80/87) Installing php7-session (7.3.26-r0)
+(81/87) Installing php7-soap (7.3.26-r0)
+(82/87) Installing php7-sqlite3 (7.3.26-r0)
+(83/87) Installing php7-xmlreader (7.3.26-r0)
+(84/87) Installing php7-xml (7.3.26-r0)
+(85/87) Installing php7-xmlrpc (7.3.26-r0)
+(86/87) Installing libzip (1.6.1-r1)
+(87/87) Installing php7-zip (7.3.26-r0)
 Executing busybox-1.31.1-r19.trigger
 Executing ca-certificates-20191127-r4.trigger
-OK: 30 MiB in 53 packages
-Removing intermediate container 358aa985226d
- ---> 9035701e567c
-Step 4/7 : ADD https://wordpress.org/latest.tar.gz .
-
-
- ---> 05d70658c019
-Step 5/7 : RUN tar -xvf latest.tar.gz && 	mv wordpress /www && 	mv wp-config.php /www/ && 	rm -f latest.tar.gz
- ---> Running in 4918d056a70e
+OK: 138 MiB in 101 packages
+(1/7) Installing openssh-keygen (8.3_p1-r1)
+(2/7) Installing openssh-client (8.3_p1-r1)
+(3/7) Installing openssh-sftp-server (8.3_p1-r1)
+(4/7) Installing openssh-server-common (8.3_p1-r1)
+(5/7) Installing openssh-server (8.3_p1-r1)
+(6/7) Installing openssh (8.3_p1-r1)
+(7/7) Installing openssl (1.1.1i-r0)
+Executing busybox-1.31.1-r19.trigger
+OK: 144 MiB in 108 packages
+Removing intermediate container 12a6273bd777
+ ---> 3889c5dff320
+Step 25/32 : RUN mkdir -p /var/www/WP
+ ---> Running in 668ea93d2ebf
+Removing intermediate container 668ea93d2ebf
+ ---> 8b73c82d555a
+Step 26/32 : RUN mkdir run/nginx
+ ---> Running in a58b64195d10
+Removing intermediate container a58b64195d10
+ ---> d1a95c09b7a9
+Step 27/32 : RUN cd /var/www/ && wget http://wordpress.org/latest.tar.gz
+ ---> Running in 2367a2ef5046
+[91mConnecting to wordpress.org (198.143.164.252:80)
+[0m[91mConnecting to wordpress.org (198.143.164.252:443)
+[0m[91msaving to 'latest.tar.gz'
+[0m[91mlatest.tar.gz          3% |*                               |  495k  0:00:29 ETA
+[0m[91mlatest.tar.gz         87% |***************************     | 12.8M  0:00:00 ETA
+[0m[91mlatest.tar.gz        100% |********************************| 14.7M  0:00:00 ETA
+'latest.tar.gz' saved
+[0mRemoving intermediate container 2367a2ef5046
+ ---> 8175724ff10a
+Step 28/32 : RUN tar -xzvf /var/www/latest.tar.gz -C /var/www/
+ ---> Running in d70eda5d1508
 wordpress/
 wordpress/xmlrpc.php
 wordpress/wp-blog-header.php
@@ -97,6 +244,7 @@ wordpress/wp-content/themes/twentynineteen/inc/color-patterns.php
 wordpress/wp-content/themes/twentynineteen/inc/template-functions.php
 wordpress/wp-content/themes/twentynineteen/inc/helper-functions.php
 wordpress/wp-content/themes/twentynineteen/inc/back-compat.php
+wordpress/wp-content/themes/twentynineteen/inc/block-patterns.php
 wordpress/wp-content/themes/twentynineteen/inc/template-tags.php
 wordpress/wp-content/themes/twentynineteen/inc/customizer.php
 wordpress/wp-content/themes/twentynineteen/inc/icon-functions.php
@@ -192,6 +340,243 @@ wordpress/wp-content/themes/twentynineteen/js/customize-preview.js
 wordpress/wp-content/themes/twentynineteen/js/skip-link-focus-fix.js
 wordpress/wp-content/themes/twentynineteen/print.css
 wordpress/wp-content/themes/twentynineteen/style.css
+wordpress/wp-content/themes/twentytwentyone/
+wordpress/wp-content/themes/twentytwentyone/footer.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/
+wordpress/wp-content/themes/twentytwentyone/template-parts/content/
+wordpress/wp-content/themes/twentytwentyone/template-parts/content/content-excerpt.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/content/content-page.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/content/content-none.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/content/content.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/content/content-single.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/header/
+wordpress/wp-content/themes/twentytwentyone/template-parts/header/excerpt-header.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/header/site-nav.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/header/site-header.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/header/entry-header.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/header/site-branding.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/footer/
+wordpress/wp-content/themes/twentytwentyone/template-parts/footer/footer-widgets.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/post/
+wordpress/wp-content/themes/twentytwentyone/template-parts/post/author-bio.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-link.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-video.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-aside.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-gallery.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-chat.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-image.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-audio.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-quote.php
+wordpress/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-status.php
+wordpress/wp-content/themes/twentytwentyone/inc/
+wordpress/wp-content/themes/twentytwentyone/inc/menu-functions.php
+wordpress/wp-content/themes/twentytwentyone/inc/template-functions.php
+wordpress/wp-content/themes/twentytwentyone/inc/custom-css.php
+wordpress/wp-content/themes/twentytwentyone/inc/back-compat.php
+wordpress/wp-content/themes/twentytwentyone/inc/block-patterns.php
+wordpress/wp-content/themes/twentytwentyone/inc/template-tags.php
+wordpress/wp-content/themes/twentytwentyone/inc/starter-content.php
+wordpress/wp-content/themes/twentytwentyone/inc/block-styles.php
+wordpress/wp-content/themes/twentytwentyone/package.json
+wordpress/wp-content/themes/twentytwentyone/.stylelintrc.json
+wordpress/wp-content/themes/twentytwentyone/image.php
+wordpress/wp-content/themes/twentytwentyone/header.php
+wordpress/wp-content/themes/twentytwentyone/archive.php
+wordpress/wp-content/themes/twentytwentyone/assets/
+wordpress/wp-content/themes/twentytwentyone/assets/images/
+wordpress/wp-content/themes/twentytwentyone/assets/images/Daffodils.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/roses-tremieres-hollyhocks-1884.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/villa-with-orange-trees-nice.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/in-the-bois-de-boulogne.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/Reading.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/the-garden-at-bougival-1884.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/self-portrait-1885.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/young-woman-in-mauve.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/images/playing-in-the-sand.jpg
+wordpress/wp-content/themes/twentytwentyone/assets/css/
+wordpress/wp-content/themes/twentytwentyone/assets/css/style-dark-mode-rtl.css
+wordpress/wp-content/themes/twentytwentyone/assets/css/style-dark-mode.css
+wordpress/wp-content/themes/twentytwentyone/assets/css/style-editor.css
+wordpress/wp-content/themes/twentytwentyone/assets/css/ie.css
+wordpress/wp-content/themes/twentytwentyone/assets/css/ie-editor.css
+wordpress/wp-content/themes/twentytwentyone/assets/css/custom-color-overrides.css
+wordpress/wp-content/themes/twentytwentyone/assets/css/style-editor-customizer.css
+wordpress/wp-content/themes/twentytwentyone/assets/css/print.css
+wordpress/wp-content/themes/twentytwentyone/assets/sass/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/03-generic/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/03-generic/clearings.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/03-generic/reset.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/03-generic/breakpoints.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/03-generic/normalize.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/03-generic/vertical-margins.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/navigation/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/navigation/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/navigation/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/gallery/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/gallery/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/gallery/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/blocks-editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/columns/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/columns/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/columns/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/code/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/code/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/code/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/button/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/button/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/button/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/utilities/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/utilities/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/utilities/_font-sizes.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/utilities/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/separator/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/separator/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/separator/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/html/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/html/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/audio/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/audio/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/legacy/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/legacy/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/legacy/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/verse/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/verse/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/verse/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/heading/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/heading/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/heading/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/pullquote/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/pullquote/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/pullquote/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/social-icons/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/social-icons/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/social-icons/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/paragraph/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/paragraph/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/paragraph/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/_config.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/media-text/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/media-text/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/media-text/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/rss/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/rss/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/rss/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/quote/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/quote/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/quote/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/preformatted/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/preformatted/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/preformatted/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/latest-comments/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/latest-comments/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/latest-comments/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/blocks.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/search/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/search/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/search/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/latest-posts/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/latest-posts/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/latest-posts/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/tag-clould/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/tag-clould/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/tag-clould/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/group/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/group/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/group/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/table/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/table/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/table/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/list/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/list/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/list/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/file/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/file/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/file/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/image/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/image/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/image/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/video/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/video/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/cover/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/cover/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/cover/_editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/spacer/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/05-blocks/spacer/_style.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/07-utilities/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/07-utilities/a11y.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/07-utilities/ie.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/07-utilities/measure.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/07-utilities/print.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/07-utilities/color-palette.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/04-elements/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/04-elements/links.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/04-elements/blockquote.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/04-elements/media.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/04-elements/forms.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/04-elements/forms-editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/04-elements/misc.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/style-editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/style-dark-mode.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/01-settings/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/01-settings/file-header.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/01-settings/fonts.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/01-settings/global.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/02-tools/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/02-tools/functions.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/02-tools/mixins.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/pagination.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/footer.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/404.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/widgets.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/navigation.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/editor.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/archives.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/posts-and-pages.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/header.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/entry.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/footer-navigation.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/single.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/comments.scss
+wordpress/wp-content/themes/twentytwentyone/assets/sass/06-components/search.scss
+wordpress/wp-content/themes/twentytwentyone/assets/js/
+wordpress/wp-content/themes/twentytwentyone/assets/js/customize.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/primary-navigation.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/responsive-embeds.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/palette-colorpicker.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/editor-dark-mode-support.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/customize-helpers.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/dark-mode-toggler.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/customize-preview.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/editor.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/polyfills.js
+wordpress/wp-content/themes/twentytwentyone/assets/js/skip-link-focus-fix.js
+wordpress/wp-content/themes/twentytwentyone/searchform.php
+wordpress/wp-content/themes/twentytwentyone/single.php
+wordpress/wp-content/themes/twentytwentyone/search.php
+wordpress/wp-content/themes/twentytwentyone/screenshot.png
+wordpress/wp-content/themes/twentytwentyone/package-lock.json
+wordpress/wp-content/themes/twentytwentyone/index.php
+wordpress/wp-content/themes/twentytwentyone/functions.php
+wordpress/wp-content/themes/twentytwentyone/404.php
+wordpress/wp-content/themes/twentytwentyone/style-rtl.css
+wordpress/wp-content/themes/twentytwentyone/page.php
+wordpress/wp-content/themes/twentytwentyone/comments.php
+wordpress/wp-content/themes/twentytwentyone/readme.txt
+wordpress/wp-content/themes/twentytwentyone/classes/
+wordpress/wp-content/themes/twentytwentyone/classes/class-twenty-twenty-one-customize-color-control.php
+wordpress/wp-content/themes/twentytwentyone/classes/class-twenty-twenty-one-custom-colors.php
+wordpress/wp-content/themes/twentytwentyone/classes/class-twenty-twenty-one-dark-mode.php
+wordpress/wp-content/themes/twentytwentyone/classes/class-twenty-twenty-one-svg-icons.php
+wordpress/wp-content/themes/twentytwentyone/classes/class-twenty-twenty-one-customize-notice-control.php
+wordpress/wp-content/themes/twentytwentyone/classes/class-twenty-twenty-one-customize.php
+wordpress/wp-content/themes/twentytwentyone/.stylelintignore
+wordpress/wp-content/themes/twentytwentyone/.stylelintrc-css.json
+wordpress/wp-content/themes/twentytwentyone/style.css
 wordpress/wp-content/themes/twentytwenty/
 wordpress/wp-content/themes/twentytwenty/footer.php
 wordpress/wp-content/themes/twentytwenty/template-parts/
@@ -208,6 +593,7 @@ wordpress/wp-content/themes/twentytwenty/template-parts/content-cover.php
 wordpress/wp-content/themes/twentytwenty/inc/
 wordpress/wp-content/themes/twentytwenty/inc/svg-icons.php
 wordpress/wp-content/themes/twentytwenty/inc/custom-css.php
+wordpress/wp-content/themes/twentytwenty/inc/block-patterns.php
 wordpress/wp-content/themes/twentytwenty/inc/template-tags.php
 wordpress/wp-content/themes/twentytwenty/inc/starter-content.php
 wordpress/wp-content/themes/twentytwenty/package.json
@@ -264,75 +650,6 @@ wordpress/wp-content/themes/twentytwenty/templates/template-cover.php
 wordpress/wp-content/themes/twentytwenty/print.css
 wordpress/wp-content/themes/twentytwenty/style.css
 wordpress/wp-content/themes/index.php
-wordpress/wp-content/themes/twentyseventeen/
-wordpress/wp-content/themes/twentyseventeen/rtl.css
-wordpress/wp-content/themes/twentyseventeen/footer.php
-wordpress/wp-content/themes/twentyseventeen/sidebar.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/
-wordpress/wp-content/themes/twentyseventeen/template-parts/navigation/
-wordpress/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/header/
-wordpress/wp-content/themes/twentyseventeen/template-parts/header/header-image.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/header/site-branding.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/footer/
-wordpress/wp-content/themes/twentyseventeen/template-parts/footer/site-info.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/footer/footer-widgets.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/content-video.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/content-gallery.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/content-excerpt.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/content-audio.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/content-none.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/content.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/post/content-image.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/page/
-wordpress/wp-content/themes/twentyseventeen/template-parts/page/content-page.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/page/content-front-page.php
-wordpress/wp-content/themes/twentyseventeen/template-parts/page/content-front-page-panels.php
-wordpress/wp-content/themes/twentyseventeen/inc/
-wordpress/wp-content/themes/twentyseventeen/inc/custom-header.php
-wordpress/wp-content/themes/twentyseventeen/inc/color-patterns.php
-wordpress/wp-content/themes/twentyseventeen/inc/template-functions.php
-wordpress/wp-content/themes/twentyseventeen/inc/back-compat.php
-wordpress/wp-content/themes/twentyseventeen/inc/template-tags.php
-wordpress/wp-content/themes/twentyseventeen/inc/customizer.php
-wordpress/wp-content/themes/twentyseventeen/inc/icon-functions.php
-wordpress/wp-content/themes/twentyseventeen/header.php
-wordpress/wp-content/themes/twentyseventeen/archive.php
-wordpress/wp-content/themes/twentyseventeen/assets/
-wordpress/wp-content/themes/twentyseventeen/assets/images/
-wordpress/wp-content/themes/twentyseventeen/assets/images/svg-icons.svg
-wordpress/wp-content/themes/twentyseventeen/assets/images/sandwich.jpg
-wordpress/wp-content/themes/twentyseventeen/assets/images/coffee.jpg
-wordpress/wp-content/themes/twentyseventeen/assets/images/header.jpg
-wordpress/wp-content/themes/twentyseventeen/assets/images/espresso.jpg
-wordpress/wp-content/themes/twentyseventeen/assets/css/
-wordpress/wp-content/themes/twentyseventeen/assets/css/ie8.css
-wordpress/wp-content/themes/twentyseventeen/assets/css/ie9.css
-wordpress/wp-content/themes/twentyseventeen/assets/css/editor-style.css
-wordpress/wp-content/themes/twentyseventeen/assets/css/editor-blocks.css
-wordpress/wp-content/themes/twentyseventeen/assets/css/blocks.css
-wordpress/wp-content/themes/twentyseventeen/assets/css/colors-dark.css
-wordpress/wp-content/themes/twentyseventeen/assets/js/
-wordpress/wp-content/themes/twentyseventeen/assets/js/navigation.js
-wordpress/wp-content/themes/twentyseventeen/assets/js/jquery.scrollTo.js
-wordpress/wp-content/themes/twentyseventeen/assets/js/global.js
-wordpress/wp-content/themes/twentyseventeen/assets/js/html5.js
-wordpress/wp-content/themes/twentyseventeen/assets/js/customize-controls.js
-wordpress/wp-content/themes/twentyseventeen/assets/js/customize-preview.js
-wordpress/wp-content/themes/twentyseventeen/assets/js/skip-link-focus-fix.js
-wordpress/wp-content/themes/twentyseventeen/searchform.php
-wordpress/wp-content/themes/twentyseventeen/single.php
-wordpress/wp-content/themes/twentyseventeen/search.php
-wordpress/wp-content/themes/twentyseventeen/screenshot.png
-wordpress/wp-content/themes/twentyseventeen/index.php
-wordpress/wp-content/themes/twentyseventeen/functions.php
-wordpress/wp-content/themes/twentyseventeen/404.php
-wordpress/wp-content/themes/twentyseventeen/page.php
-wordpress/wp-content/themes/twentyseventeen/comments.php
-wordpress/wp-content/themes/twentyseventeen/readme.txt
-wordpress/wp-content/themes/twentyseventeen/front-page.php
-wordpress/wp-content/themes/twentyseventeen/style.css
 wordpress/wp-content/index.php
 wordpress/wp-content/plugins/
 wordpress/wp-content/plugins/akismet/
@@ -457,6 +774,12 @@ wordpress/wp-includes/images/arrow-pointer-blue.png
 wordpress/wp-includes/locale.php
 wordpress/wp-includes/class-wp-feed-cache-transient.php
 wordpress/wp-includes/class-wp-recovery-mode-email-service.php
+wordpress/wp-includes/block-supports/
+wordpress/wp-includes/block-supports/custom-classname.php
+wordpress/wp-includes/block-supports/align.php
+wordpress/wp-includes/block-supports/generated-classname.php
+wordpress/wp-includes/block-supports/typography.php
+wordpress/wp-includes/block-supports/colors.php
 wordpress/wp-includes/class-wp-comment-query.php
 wordpress/wp-includes/theme-compat/
 wordpress/wp-includes/theme-compat/footer.php
@@ -787,6 +1110,7 @@ wordpress/wp-includes/ID3/module.audio.ogg.php
 wordpress/wp-includes/ID3/module.audio-video.riff.php
 wordpress/wp-includes/ID3/module.audio-video.asf.php
 wordpress/wp-includes/class-walker-page-dropdown.php
+wordpress/wp-includes/class-wp-block-supports.php
 wordpress/wp-includes/class-wp-customize-panel.php
 wordpress/wp-includes/class-wp-locale.php
 wordpress/wp-includes/class-wp-user-meta-session-tokens.php
@@ -843,6 +1167,8 @@ wordpress/wp-includes/blocks/paragraph/
 wordpress/wp-includes/blocks/paragraph/block.json
 wordpress/wp-includes/blocks/archives/
 wordpress/wp-includes/blocks/archives/block.json
+wordpress/wp-includes/blocks/embed/
+wordpress/wp-includes/blocks/embed/block.json
 wordpress/wp-includes/blocks/archives.php
 wordpress/wp-includes/blocks/block/
 wordpress/wp-includes/blocks/block/block.json
@@ -1091,6 +1417,7 @@ wordpress/wp-includes/sodium_compat/src/Core/BLAKE2b.php
 wordpress/wp-includes/sodium_compat/src/SodiumException.php
 wordpress/wp-includes/sodium_compat/src/Crypto32.php
 wordpress/wp-includes/sodium_compat/src/File.php
+wordpress/wp-includes/sodium_compat/autoload-php7.php
 wordpress/wp-includes/sodium_compat/composer.json
 wordpress/wp-includes/sodium_compat/namespaced/
 wordpress/wp-includes/sodium_compat/namespaced/Crypto.php
@@ -1146,6 +1473,7 @@ wordpress/wp-includes/sitemaps/class-wp-sitemaps.php
 wordpress/wp-includes/session.php
 wordpress/wp-includes/rest-api/
 wordpress/wp-includes/rest-api/endpoints/
+wordpress/wp-includes/rest-api/endpoints/class-wp-rest-application-passwords-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-themes-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-search-controller.php
@@ -1159,6 +1487,7 @@ wordpress/wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-autosaves-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-plugins-controller.php
+wordpress/wp-includes/rest-api/endpoints/class-wp-rest-site-health-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-blocks-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php
 wordpress/wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php
@@ -1169,6 +1498,8 @@ wordpress/wp-includes/rest-api/class-wp-rest-response.php
 wordpress/wp-includes/rest-api/class-wp-rest-server.php
 wordpress/wp-includes/rest-api/search/
 wordpress/wp-includes/rest-api/search/class-wp-rest-post-search-handler.php
+wordpress/wp-includes/rest-api/search/class-wp-rest-post-format-search-handler.php
+wordpress/wp-includes/rest-api/search/class-wp-rest-term-search-handler.php
 wordpress/wp-includes/rest-api/search/class-wp-rest-search-handler.php
 wordpress/wp-includes/rest-api/fields/
 wordpress/wp-includes/rest-api/fields/class-wp-rest-post-meta-fields.php
@@ -1214,6 +1545,7 @@ wordpress/wp-includes/block-patterns/text-two-columns-with-images.php
 wordpress/wp-includes/class-wp.php
 wordpress/wp-includes/spl-autoload-compat.php
 wordpress/wp-includes/registration-functions.php
+wordpress/wp-includes/class-wp-application-passwords.php
 wordpress/wp-includes/feed-rdf.php
 wordpress/wp-includes/load.php
 wordpress/wp-includes/bookmark.php
@@ -1300,6 +1632,7 @@ wordpress/wp-includes/js/dist/blocks.js
 wordpress/wp-includes/js/dist/keyboard-shortcuts.min.js
 wordpress/wp-includes/js/dist/block-library.min.js
 wordpress/wp-includes/js/dist/token-list.js
+wordpress/wp-includes/js/dist/reusable-blocks.js
 wordpress/wp-includes/js/dist/data.min.js
 wordpress/wp-includes/js/dist/api-fetch.js
 wordpress/wp-includes/js/dist/list-reusable-blocks.min.js
@@ -1330,6 +1663,7 @@ wordpress/wp-includes/js/dist/media-utils.js
 wordpress/wp-includes/js/dist/a11y.js
 wordpress/wp-includes/js/dist/hooks.min.js
 wordpress/wp-includes/js/dist/redux-routine.js
+wordpress/wp-includes/js/dist/reusable-blocks.min.js
 wordpress/wp-includes/js/dist/primitives.js
 wordpress/wp-includes/js/dist/block-editor.js
 wordpress/wp-includes/js/dist/warning.min.js
@@ -1554,41 +1888,79 @@ wordpress/wp-includes/js/jquery/jquery.serialize-object.js
 wordpress/wp-includes/js/jquery/suggest.min.js
 wordpress/wp-includes/js/jquery/jquery.js
 wordpress/wp-includes/js/jquery/suggest.js
+wordpress/wp-includes/js/jquery/jquery.min.js
 wordpress/wp-includes/js/jquery/ui/
+wordpress/wp-includes/js/jquery/ui/effect-fade.js
+wordpress/wp-includes/js/jquery/ui/controlgroup.min.js
 wordpress/wp-includes/js/jquery/ui/effect-highlight.min.js
+wordpress/wp-includes/js/jquery/ui/effect-clip.js
+wordpress/wp-includes/js/jquery/ui/effect-highlight.js
+wordpress/wp-includes/js/jquery/ui/button.js
 wordpress/wp-includes/js/jquery/ui/tabs.min.js
 wordpress/wp-includes/js/jquery/ui/selectable.min.js
+wordpress/wp-includes/js/jquery/ui/draggable.js
 wordpress/wp-includes/js/jquery/ui/droppable.min.js
+wordpress/wp-includes/js/jquery/ui/effect.js
+wordpress/wp-includes/js/jquery/ui/spinner.js
 wordpress/wp-includes/js/jquery/ui/effect-explode.min.js
+wordpress/wp-includes/js/jquery/ui/accordion.js
 wordpress/wp-includes/js/jquery/ui/core.min.js
-wordpress/wp-includes/js/jquery/ui/widget.min.js
 wordpress/wp-includes/js/jquery/ui/effect-pulsate.min.js
 wordpress/wp-includes/js/jquery/ui/mouse.min.js
 wordpress/wp-includes/js/jquery/ui/effect-puff.min.js
+wordpress/wp-includes/js/jquery/ui/effect-shake.js
+wordpress/wp-includes/js/jquery/ui/menu.js
 wordpress/wp-includes/js/jquery/ui/draggable.min.js
+wordpress/wp-includes/js/jquery/ui/selectmenu.js
+wordpress/wp-includes/js/jquery/ui/sortable.js
+wordpress/wp-includes/js/jquery/ui/core.js
 wordpress/wp-includes/js/jquery/ui/effect-slide.min.js
+wordpress/wp-includes/js/jquery/ui/effect-drop.js
+wordpress/wp-includes/js/jquery/ui/effect-size.js
+wordpress/wp-includes/js/jquery/ui/autocomplete.js
 wordpress/wp-includes/js/jquery/ui/menu.min.js
+wordpress/wp-includes/js/jquery/ui/tabs.js
 wordpress/wp-includes/js/jquery/ui/effect-bounce.min.js
 wordpress/wp-includes/js/jquery/ui/effect-drop.min.js
+wordpress/wp-includes/js/jquery/ui/selectable.js
+wordpress/wp-includes/js/jquery/ui/dialog.js
 wordpress/wp-includes/js/jquery/ui/effect-fold.min.js
+wordpress/wp-includes/js/jquery/ui/checkboxradio.min.js
+wordpress/wp-includes/js/jquery/ui/effect-puff.js
 wordpress/wp-includes/js/jquery/ui/autocomplete.min.js
+wordpress/wp-includes/js/jquery/ui/slider.js
 wordpress/wp-includes/js/jquery/ui/tooltip.min.js
 wordpress/wp-includes/js/jquery/ui/sortable.min.js
+wordpress/wp-includes/js/jquery/ui/droppable.js
 wordpress/wp-includes/js/jquery/ui/effect-blind.min.js
+wordpress/wp-includes/js/jquery/ui/effect-pulsate.js
 wordpress/wp-includes/js/jquery/ui/resizable.min.js
+wordpress/wp-includes/js/jquery/ui/datepicker.js
+wordpress/wp-includes/js/jquery/ui/effect-scale.js
+wordpress/wp-includes/js/jquery/ui/checkboxradio.js
 wordpress/wp-includes/js/jquery/ui/spinner.min.js
 wordpress/wp-includes/js/jquery/ui/button.min.js
 wordpress/wp-includes/js/jquery/ui/progressbar.min.js
+wordpress/wp-includes/js/jquery/ui/tooltip.js
 wordpress/wp-includes/js/jquery/ui/effect.min.js
+wordpress/wp-includes/js/jquery/ui/effect-transfer.js
 wordpress/wp-includes/js/jquery/ui/accordion.min.js
 wordpress/wp-includes/js/jquery/ui/effect-fade.min.js
+wordpress/wp-includes/js/jquery/ui/effect-fold.js
 wordpress/wp-includes/js/jquery/ui/effect-transfer.min.js
-wordpress/wp-includes/js/jquery/ui/position.min.js
+wordpress/wp-includes/js/jquery/ui/mouse.js
+wordpress/wp-includes/js/jquery/ui/controlgroup.js
+wordpress/wp-includes/js/jquery/ui/progressbar.js
 wordpress/wp-includes/js/jquery/ui/effect-clip.min.js
 wordpress/wp-includes/js/jquery/ui/effect-scale.min.js
 wordpress/wp-includes/js/jquery/ui/selectmenu.min.js
+wordpress/wp-includes/js/jquery/ui/effect-blind.js
+wordpress/wp-includes/js/jquery/ui/effect-explode.js
+wordpress/wp-includes/js/jquery/ui/resizable.js
 wordpress/wp-includes/js/jquery/ui/dialog.min.js
+wordpress/wp-includes/js/jquery/ui/effect-slide.js
 wordpress/wp-includes/js/jquery/ui/slider.min.js
+wordpress/wp-includes/js/jquery/ui/effect-bounce.js
 wordpress/wp-includes/js/jquery/ui/effect-size.min.js
 wordpress/wp-includes/js/jquery/ui/datepicker.min.js
 wordpress/wp-includes/js/jquery/ui/effect-shake.min.js
@@ -1763,6 +2135,7 @@ wordpress/wp-admin/images/marker.png
 wordpress/wp-admin/images/resize.gif
 wordpress/wp-admin/images/sort-2x.gif
 wordpress/wp-admin/images/align-center.png
+wordpress/wp-admin/images/privacy.png
 wordpress/wp-admin/images/loading.gif
 wordpress/wp-admin/images/comment-grey-bubble-2x.png
 wordpress/wp-admin/images/wordpress-logo.svg
@@ -1780,6 +2153,7 @@ wordpress/wp-admin/images/list.png
 wordpress/wp-admin/images/align-left.png
 wordpress/wp-admin/images/w-logo-white.png
 wordpress/wp-admin/images/align-right-2x.png
+wordpress/wp-admin/images/freedoms.png
 wordpress/wp-admin/images/media-button-other.gif
 wordpress/wp-admin/images/se.png
 wordpress/wp-admin/images/date-button-2x.gif
@@ -2069,6 +2443,7 @@ wordpress/wp-admin/includes/plugin-install.php
 wordpress/wp-admin/includes/class-wp-site-icon.php
 wordpress/wp-admin/includes/network.php
 wordpress/wp-admin/includes/class-wp-importer.php
+wordpress/wp-admin/includes/class-wp-application-passwords-list-table.php
 wordpress/wp-admin/includes/deprecated.php
 wordpress/wp-admin/includes/class-wp-terms-list-table.php
 wordpress/wp-admin/includes/export.php
@@ -2135,6 +2510,7 @@ wordpress/wp-admin/edit-link-form.php
 wordpress/wp-admin/edit-form-blocks.php
 wordpress/wp-admin/user-edit.php
 wordpress/wp-admin/press-this.php
+wordpress/wp-admin/authorize-application.php
 wordpress/wp-admin/admin-footer.php
 wordpress/wp-admin/edit-form-advanced.php
 wordpress/wp-admin/import.php
@@ -2178,6 +2554,7 @@ wordpress/wp-admin/user-new.php
 wordpress/wp-admin/options-discussion.php
 wordpress/wp-admin/admin-ajax.php
 wordpress/wp-admin/js/
+wordpress/wp-admin/js/auth-app.min.js
 wordpress/wp-admin/js/revisions.min.js
 wordpress/wp-admin/js/nav-menu.js
 wordpress/wp-admin/js/plugin-install.min.js
@@ -2189,6 +2566,7 @@ wordpress/wp-admin/js/gallery.min.js
 wordpress/wp-admin/js/tags-suggest.js
 wordpress/wp-admin/js/accordion.js
 wordpress/wp-admin/js/user-profile.js
+wordpress/wp-admin/js/application-passwords.min.js
 wordpress/wp-admin/js/media-gallery.js
 wordpress/wp-admin/js/password-strength-meter.min.js
 wordpress/wp-admin/js/dashboard.js
@@ -2251,6 +2629,7 @@ wordpress/wp-admin/js/theme-plugin-editor.js
 wordpress/wp-admin/js/nav-menu.min.js
 wordpress/wp-admin/js/image-edit.js
 wordpress/wp-admin/js/custom-background.min.js
+wordpress/wp-admin/js/application-passwords.js
 wordpress/wp-admin/js/user-profile.min.js
 wordpress/wp-admin/js/svg-painter.js
 wordpress/wp-admin/js/link.js
@@ -2272,6 +2651,7 @@ wordpress/wp-admin/js/tags-box.min.js
 wordpress/wp-admin/js/svg-painter.min.js
 wordpress/wp-admin/js/custom-background.js
 wordpress/wp-admin/js/color-picker.min.js
+wordpress/wp-admin/js/auth-app.js
 wordpress/wp-admin/js/code-editor.js
 wordpress/wp-admin/js/common.js
 wordpress/wp-admin/js/set-post-thumbnail.min.js
@@ -2292,15 +2672,27 @@ wordpress/wp-admin/themes.php
 wordpress/wp-admin/options-reading.php
 wordpress/wp-trackback.php
 wordpress/wp-comments-post.php
-Removing intermediate container 4918d056a70e
- ---> f2ff1a37660f
-Step 6/7 : EXPOSE 5050
- ---> Running in e12a04a894ab
-Removing intermediate container e12a04a894ab
- ---> 45410b1e81a9
-Step 7/7 : CMD ./setup.sh
- ---> Running in 95fd000864aa
-Removing intermediate container 95fd000864aa
- ---> 62fb625fabbf
-Successfully built 62fb625fabbf
+Removing intermediate container d70eda5d1508
+ ---> c1f98db08e43
+Step 29/32 : RUN apk add curl &&     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar &&     chmod +x wp-cli.phar &&     mv wp-cli.phar /usr/local/bin/wp
+ ---> Running in 7354593da04a
+(1/1) Installing curl (7.69.1-r3)
+Executing busybox-1.31.1-r19.trigger
+OK: 144 MiB in 109 packages
+[91m [0m[91m [0m[91m%[0m[91m [0m[91mT[0m[91mo[0m[91mt[0m[91ma[0m[91ml[0m[91m [0m[91m [0m[91m [0m[91m [0m[91m%[0m[91m [0m[91mR[0m[91me[0m[91mc[0m[91me[0m[91mi[0m[91mv[0m[91me[0m[91md[0m[91m [0m[91m%[0m[91m [0m[91mX[0m[91mf[0m[91me[0m[91mr[0m[91md[0m[91m [0m[91m Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total  [0m[91m [0m[91mSpent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m[91m100 5437k  100 5437k    0     0  32.5M      0 --:--:-- --:--:-- --:--:-- 32.5M
+[0mRemoving intermediate container 7354593da04a
+ ---> 1bfce69a10a0
+Step 30/32 : ADD default.conf /etc/nginx/conf.d/default.conf
+ ---> 89c73ffb5c12
+Step 31/32 : EXPOSE 5050
+ ---> Running in 43c1b00f907f
+Removing intermediate container 43c1b00f907f
+ ---> 7368fe7d8bde
+Step 32/32 : CMD ./entrypoint.sh
+ ---> Running in 2fd2de77ab35
+Removing intermediate container 2fd2de77ab35
+ ---> 09ba8788821d
+Successfully built 09ba8788821d
 Successfully tagged monwordpress:latest

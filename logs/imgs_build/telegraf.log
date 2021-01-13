@@ -1,0 +1,20 @@
+Sending build context to Docker daemon  255.5kB
+Step 1/4 : FROM alpine:3.12
+ ---> 389fef711851
+Step 2/4 : RUN apk update
+ ---> Using cache
+ ---> 95b521ee3d16
+Step 3/4 : RUN cd /home && wget https://dl.influxdata.com/telegraf/releases/telegraf-1.16.1_linux_i386.tar.gz && tar xf telegraf-1.16.1_linux_i386.tar.gz && mv telegraf-1.16.1 telegraf
+ ---> Running in 8809ecd69b55
+[91mConnecting to dl.influxdata.com (13.225.25.22:443)
+[0m[91msaving to 'telegraf-1.16.1_linux_i386.tar.gz'
+[0m[91mtelegraf-1.16.1_linu 100% |********************************| 19.2M  0:00:00 ETA
+'telegraf-1.16.1_linux_i386.tar.gz' saved
+[0mRemoving intermediate container 8809ecd69b55
+ ---> d7c73b508d98
+Step 4/4 : ENTRYPOINT ["/home/telegraf/usr/bin/telegraf", "--config", "/etc/telegraf.conf"]
+ ---> Running in c8c5742fd69d
+Removing intermediate container c8c5742fd69d
+ ---> b6d088d1aa6b
+Successfully built b6d088d1aa6b
+Successfully tagged montelegraf:latest

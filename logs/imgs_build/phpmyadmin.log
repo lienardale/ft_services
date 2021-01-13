@@ -1,18 +1,66 @@
-Sending build context to Docker daemon  102.9kB
-Step 1/7 : FROM alpine:latest
- ---> d6e46aa2470d
-Step 2/7 : COPY config.inc.php setup.sh default.conf www.conf php.ini ./
- ---> 7124518236e3
-Step 3/7 : RUN apk update && 	apk add --no-cache php7 php7-fpm php7-opcache php7-gd php7-mysqli 	php7-zlib php7-curl php7-mbstring php7-json php7-session
- ---> Running in dcc74f15aa95
+Sending build context to Docker daemon  112.6kB
+Step 1/21 : FROM alpine:latest
+ ---> 389fef711851
+Step 2/21 : ENV PHP_FPM_USER="www"
+ ---> Using cache
+ ---> 15f311093e5f
+Step 3/21 : ENV PHP_FPM_GROUP="www"
+ ---> Using cache
+ ---> 065f78ce2e0d
+Step 4/21 : ENV PHP_FPM_LISTEN_MODE="0660"
+ ---> Using cache
+ ---> 554b69673d11
+Step 5/21 : ENV PHP_MEMORY_LIMIT="512M"
+ ---> Using cache
+ ---> 1b32a83cdf13
+Step 6/21 : ENV PHP_MAX_UPLOAD="50M"
+ ---> Using cache
+ ---> 45b53f28e520
+Step 7/21 : ENV PHP_MAX_FILE_UPLOAD="200"
+ ---> Using cache
+ ---> 066b0dccddd6
+Step 8/21 : ENV PHP_MAX_POST="100M"
+ ---> Using cache
+ ---> 47070f77ca42
+Step 9/21 : ENV PHP_DISPLAY_ERRORS="On"
+ ---> Using cache
+ ---> eb3efaea83e6
+Step 10/21 : ENV PHP_DISPLAY_STARTUP_ERRORS="On"
+ ---> Using cache
+ ---> 905a31aef720
+Step 11/21 : ENV PHP_ERROR_REPORTING="E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR"
+ ---> Using cache
+ ---> e5fe729230ac
+Step 12/21 : ENV PHP_CGI_FIX_PATHINFO=0
+ ---> Using cache
+ ---> 767eb9e85861
+Step 13/21 : RUN adduser -D -g 'www' www
+ ---> Using cache
+ ---> ac7260b4a681
+Step 14/21 : COPY config.inc.php setup.sh default.conf www.conf php.ini php-fpm.conf ./
+ ---> 98941286d712
+Step 15/21 : RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.11/community/" >> /etc/apk/repositories
+ ---> Running in d195cb1cf6e5
+Removing intermediate container d195cb1cf6e5
+ ---> dae2c646e906
+Step 16/21 : RUN apk update && apk add nginx && 	mkdir -p /run/nginx/ && 	mkdir -p /var/www/PMA && 	apk add --no-cache php7 php7-fpm php7-opcache php7-gd php7-mysqli 	php7-zlib php7-curl php7-mbstring php7-json php7-session 	&& apk add openssl openssh
+ ---> Running in 09ae86c52029
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
-v3.12.1-67-ge0f25e8e68 [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
-v3.12.1-65-gda4c4bae78 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
-OK: 12746 distinct packages available
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.11/community/x86_64/APKINDEX.tar.gz
+v3.12.3-54-gc2a303485f [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.3-54-gc2a303485f [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+v3.11.7 [http://dl-cdn.alpinelinux.org/alpine/v3.11/community/]
+OK: 18663 distinct packages available
+(1/2) Installing pcre (8.44-r0)
+(2/2) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+Executing busybox-1.31.1-r19.trigger
+OK: 7 MiB in 16 packages
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
-(1/39) Installing php7-common (7.3.25-r0)
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.11/community/x86_64/APKINDEX.tar.gz
+(1/39) Installing php7-common (7.3.26-r0)
 (2/39) Installing argon2-libs (20190702-r1)
 (3/39) Installing ncurses-terminfo-base (6.2_p20200523-r0)
 (4/39) Installing ncurses-libs (6.2_p20200523-r0)
@@ -20,12 +68,12 @@ fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.g
 (6/39) Installing pcre2 (10.35-r0)
 (7/39) Installing xz-libs (5.2.5-r0)
 (8/39) Installing libxml2 (2.9.10-r5)
-(9/39) Installing php7 (7.3.25-r0)
+(9/39) Installing php7 (7.3.26-r0)
 (10/39) Installing ca-certificates (20191127-r4)
 (11/39) Installing nghttp2-libs (1.41.0-r0)
-(12/39) Installing libcurl (7.69.1-r1)
-(13/39) Installing php7-curl (7.3.25-r0)
-(14/39) Installing php7-fpm (7.3.25-r0)
+(12/39) Installing libcurl (7.69.1-r3)
+(13/39) Installing php7-curl (7.3.26-r0)
+(14/39) Installing php7-fpm (7.3.26-r0)
 (15/39) Installing libxau (1.0.9-r0)
 (16/39) Installing libbsd (0.10.0-r0)
 (17/39) Installing libxdmcp (1.1.3-r0)
@@ -43,26 +91,36 @@ fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.g
 (29/39) Installing freetype (2.10.4-r0)
 (30/39) Installing libjpeg-turbo (2.0.5-r0)
 (31/39) Installing libwebp (1.1.0-r0)
-(32/39) Installing php7-gd (7.3.25-r0)
-(33/39) Installing php7-json (7.3.25-r0)
-(34/39) Installing php7-mbstring (7.3.25-r0)
-(35/39) Installing php7-openssl (7.3.25-r0)
-(36/39) Installing php7-mysqlnd (7.3.25-r0)
-(37/39) Installing php7-mysqli (7.3.25-r0)
-(38/39) Installing php7-opcache (7.3.25-r0)
-(39/39) Installing php7-session (7.3.25-r0)
+(32/39) Installing php7-gd (7.3.26-r0)
+(33/39) Installing php7-json (7.3.26-r0)
+(34/39) Installing php7-mbstring (7.3.26-r0)
+(35/39) Installing php7-openssl (7.3.26-r0)
+(36/39) Installing php7-mysqlnd (7.3.26-r0)
+(37/39) Installing php7-mysqli (7.3.26-r0)
+(38/39) Installing php7-opcache (7.3.26-r0)
+(39/39) Installing php7-session (7.3.26-r0)
 Executing busybox-1.31.1-r19.trigger
 Executing ca-certificates-20191127-r4.trigger
-OK: 30 MiB in 53 packages
-Removing intermediate container dcc74f15aa95
- ---> 12ee6d1f48d8
-Step 4/7 : ADD https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-english.tar.gz .
-
-
- ---> aa480bc6c0e1
-Step 5/7 : RUN tar -xvf phpMyAdmin-5.0.2-english.tar.gz && 	mv phpMyAdmin-5.0.2-english /var/www && 	mv config.inc.php /var/www/ && 	rm -f phpMyAdmin-5.0.2-english.tar.gz
- ---> Running in 8e07c54a1662
-phpMyAdmin-5.0.2-english/
+OK: 32 MiB in 55 packages
+(1/7) Installing openssh-keygen (8.3_p1-r1)
+(2/7) Installing openssh-client (8.3_p1-r1)
+(3/7) Installing openssh-sftp-server (8.3_p1-r1)
+(4/7) Installing openssh-server-common (8.3_p1-r1)
+(5/7) Installing openssh-server (8.3_p1-r1)
+(6/7) Installing openssh (8.3_p1-r1)
+(7/7) Installing openssl (1.1.1i-r0)
+Executing busybox-1.31.1-r19.trigger
+OK: 38 MiB in 62 packages
+Removing intermediate container 09ae86c52029
+ ---> f13ae392f062
+Step 17/21 : RUN mkdir -p /usr/share/webapps/ &&  	cd /usr/share/webapps && 	wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-english.tar.gz && 	tar -xvf phpMyAdmin-5.0.2-english.tar.gz && 	rm phpMyAdmin-5.0.2-english.tar.gz && 	mv phpMyAdmin-5.0.2-english PMA && 	chmod -R 777 /usr/share/webapps/
+ ---> Running in c1b97995936d
+[91mConnecting to files.phpmyadmin.net (185.93.2.26:443)
+[0m[91msaving to 'phpMyAdmin-5.0.2-english.tar.gz'
+[0m[91mphpMyAdmin-5.0.2-eng [0m[91m 29% |*********                       | 2271k  0:00:02 ETA
+[0m[91mphpMyAdmin-5.0.2-eng [0m[91m100% [0m[91m|********************************| [0m[91m7803k[0m[91m  0:00:00 ETA[0m[91m
+[0m[91m'phpMyAdmin-5.0.2-english.tar.gz' saved
+[0mphpMyAdmin-5.0.2-english/
 phpMyAdmin-5.0.2-english/CODE_OF_CONDUCT.md
 phpMyAdmin-5.0.2-english/CONTRIBUTING.md
 phpMyAdmin-5.0.2-english/ChangeLog
@@ -3753,15 +3811,28 @@ phpMyAdmin-5.0.2-english/version_check.php
 phpMyAdmin-5.0.2-english/view_create.php
 phpMyAdmin-5.0.2-english/view_operations.php
 phpMyAdmin-5.0.2-english/yarn.lock
-Removing intermediate container 8e07c54a1662
- ---> e0588e5ac37e
-Step 6/7 : EXPOSE 5000
- ---> Running in e1e8c914b2ac
-Removing intermediate container e1e8c914b2ac
- ---> a26e721d4d51
-Step 7/7 : CMD ./setup.sh
- ---> Running in ed44c001fa18
-Removing intermediate container ed44c001fa18
- ---> e68be015b4b3
-Successfully built e68be015b4b3
+Removing intermediate container c1b97995936d
+ ---> 4bf80029e379
+Step 18/21 : RUN	cd && cd .. && 	cp -rf /usr/share/webapps/PMA/ /var/www/ && 	chmod -R 777 /var/www/PMA && 	mv default.conf /etc/nginx/conf.d/ && 	mv www.conf etc/php7/php-fpm.d/www.conf && 	mv php-fpm.conf etc/php7/php-fpm.conf && 	mv php.ini etc/php7/php.ini && 	mkdir -p etc/phpmyadmin && 	mv config.inc.php /var/www/PMA
+ ---> Running in 90fa9f5ca98a
+Removing intermediate container 90fa9f5ca98a
+ ---> 6b20710ba3a9
+Step 19/21 : RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=Federation/CN=localhost" 	-keyout /etc/ssl/private/ssl.key -out /etc/ssl/certs/ssl.crt
+ ---> Running in eaf8e4b5d8dc
+[91mGenerating a RSA private key
+[0m[91m...[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m...[0m[91m.[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m+[0m[91m+[0m[91m++[0m[91m+
+[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m+[0m[91m+[0m[91m+[0m[91m+[0m[91m+
+writing new private key to '/etc/ssl/private/ssl.key'
+[0m[91m-----
+[0mRemoving intermediate container eaf8e4b5d8dc
+ ---> 17b150dc7a82
+Step 20/21 : EXPOSE 5000
+ ---> Running in ad6ac063ca3f
+Removing intermediate container ad6ac063ca3f
+ ---> 0c50623cfff5
+Step 21/21 : CMD ./setup.sh
+ ---> Running in d46a113a9c8d
+Removing intermediate container d46a113a9c8d
+ ---> 68103451dcf1
+Successfully built 68103451dcf1
 Successfully tagged monphpmyadmin:latest

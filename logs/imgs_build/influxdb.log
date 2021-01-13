@@ -1,0 +1,25 @@
+Sending build context to Docker daemon    276kB
+Step 1/5 : FROM alpine:3.12
+3.12: Pulling from library/alpine
+Digest: sha256:3c7497bf0c7af93428242d6176e8f7905f2201d8fc5861f45be7a346b5f23436
+Status: Downloaded newer image for alpine:3.12
+ ---> 389fef711851
+Step 2/5 : RUN apk update
+ ---> Using cache
+ ---> 95b521ee3d16
+Step 3/5 : RUN apk add influxdb
+ ---> Running in d5c3d6816654
+(1/1) Installing influxdb (1.8.0-r1)
+Executing influxdb-1.8.0-r1.pre-install
+Executing busybox-1.31.1-r19.trigger
+OK: 268 MiB in 15 packages
+Removing intermediate container d5c3d6816654
+ ---> 4c4c1f6ac7ee
+Step 4/5 : COPY influxdb.conf /etc/influxdb.conf
+ ---> 4e7de5d27afb
+Step 5/5 : ENTRYPOINT influxd -config /etc/influxdb.conf
+ ---> Running in 78d1d71df464
+Removing intermediate container 78d1d71df464
+ ---> 1272fcd14d76
+Successfully built 1272fcd14d76
+Successfully tagged moninfluxdb:latest

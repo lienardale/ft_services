@@ -17,7 +17,7 @@ spec:
         image: monphpmyadmin:latest
         imagePullPolicy: Never
         ports:
-        - containerPort: 80
+        - containerPort: 5000
           name: php-port
         livenessProbe:
           exec:

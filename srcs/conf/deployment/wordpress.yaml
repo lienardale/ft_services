@@ -2,7 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress-deploy
+  labels:
+    app: wordpress
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
@@ -13,17 +16,16 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: wordpress
-        image: monwordpress:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 80
-          name: wp-port
-        livenessProbe:
-          exec:
-            command:
-            - /bin/ash
-            - -c
-            - 'pgrep php'
-          initialDelaySeconds: 10
-          periodSeconds: 5
+        - name: wordpress
+          image: monwordpress:latest
+          livenessProbe:
+            exec:
+              command:
+              - sh
+              - liveness.sh
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          ports:
+            - containerPort: 9000
+            - containerPort: 5050
+          imagePullPolicy: Never

@@ -1,17 +1,18 @@
-# SERVICES=( ftps grafana influxdb mysql nginx phpmyadmin wordpress ) 
-SERVICES=( nginx phpmyadmin mysql wordpress )
-# VOLUMES=( mysql influxdb ) 
-VOLUMES=( mysql )
+SERVICES=( nginx ftps mysql wordpress phpmyadmin influxdb telegraf grafana )
+# SERVICES=( nginx phpmyadmin mysql wordpress )
+VOLUMES=( mysql influxdb ) 
+# VOLUMES=( mysql )
 
-rm -rf ~/.ssh/known_hosts
+# rm -rf ~/.ssh/known_hosts
 
 # RESET LOG FILES
-rm -rf logs > /dev/null 2>&1
+sudo rm -rf logs > /dev/null 2>&1
 mkdir ./logs > /dev/null 2>&1
 mkdir ./logs/imgs_build > /dev/null 2>&1
 mkdir ./logs/volumes > /dev/null 2>&1
 mkdir ./logs/deployment > /dev/null 2>&1
 mkdir ./logs/services > /dev/null 2>&1
+mkdir ./logs/others > /dev/null 2>&1
 
 # SETUP VM FCT
 
@@ -21,13 +22,14 @@ setup_vm()
 	then
 		apt update &> /dev/null
 		sudo curl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl &> /dev/null
-		sudo curl -L https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube &> /dev/null
+		sudo curl -L https://storage.googleapis.com/minikube/releases/v1.13.1/minikube-linux-amd64 -o /usr/local/bin/minikube &> /dev/null
+		# sudo curl -L https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube &> /dev/null
 		sudo chmod +x /usr/local/bin/kubectl /usr/local/bin/minikube &> /dev/null
 		touch ~/.vm_isset
 		
 		sudo chown -R $USER $HOME/.minikube; chmod -R u+wrx $HOME/.minikube
-		# minikube start
-		# minikube delete
+		minikube start
+		minikube delete
 		###		Run docker ###
 		if [[ $(service docker status | grep running) = '' ]]
 		then
@@ -42,9 +44,11 @@ setup_vm()
 		then
 			sudo usermod -aG docker $USER && newgrp docker
 		fi
+		if [[ ! `which filezilla` ]] || [[ `which filezilla` = 'filezilla not found' ]]
+		then
+			sudo apt-get install filezilla
+		fi
 		echo "SETUP VM COMPLETE"
-		# echo "RERUN SCRIPT"
-		# sudo usermod -aG docker user42 && newgrp docker
 	fi
 }
 
@@ -65,19 +69,19 @@ then
 		IP_RANGE="192.168.99.124-192.168.99.250"
 		CPU=3
 		DRVR=virtualbox
-		###		Install & update k8s/minikube ###
-		echo "Install Kubernetes and minikube? (If not sure, press 1)"
+	###		Install & update k8s/minikube ###
+		echo "\nInstall Kubernetes and minikube? (If not sure, press 1)"
 		select yn in "Yes" "No"; do
 			case $yn in
 				Yes )	brew install screen; \
-						curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64; \
+						curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.13.1/minikube-darwin-amd64; \
 						chmod +x minikube; \
 						sudo mv minikube /usr/local/bin; \
 						brew install kubernetes-cli; break;;
 				No )	break;;
 			esac
 		done
-		# minikube start
+		minikube start
 else
 		echo "On Linux"
 		RED="\e[91m"
@@ -87,8 +91,8 @@ else
 		PURPLE="\e[95m"
 		CYAN="\e[96m"
 		WHITE="\e[97m"
-		IP_RANGE="192.168.99.124-192.168.99.250"
-		# IP_RANGE="172.17.0.2-172.17.0.254"
+		# IP_RANGE="192.168.99.124-192.168.99.250"
+		IP_RANGE="172.17.0.200-172.17.0.200"
 		CPU=2
 		DRVR=docker
 		setup_vm
@@ -103,6 +107,9 @@ echo "        - $IP_RANGE" >> srcs/metallb_config.yaml
 
 setup_aliases()
 {
+	echo -ne $BLUE
+	echo -n "Setting up aliases..."
+	echo -ne $WHITE 
 	if [ ! "$(cat ~/.zshrc | grep "source <(kubectl completion zsh)")" ];
 	then
 		echo "source <(kubectl completion zsh)" >> ~/.zshrc
@@ -144,7 +151,7 @@ setup_aliases()
 		echo "alias kuc='kubectl config use-context'" >> ~/.zshrc
 	fi
 	echo -ne $GREEN
-	echo "ALIASES SET ON ZSH"
+	echo "aliases set on zsh."
 	echo -ne $WHITE
 }
 
@@ -152,21 +159,27 @@ setup_aliases()
 
 setup_minikube()
 {
-	minikube delete
-	minikube config set WantUpdateNotification false
-	minikube start --vm-driver=$DRVR --cpus=$CPU
-	minikube addons enable metrics-server
-	minikube addons enable dashboard
+	echo -ne $BLUE
+	echo -n "Setting up minikube..."
+	echo -ne $WHITE 
+	minikube delete > logs/minikube.log 2>&1
+	minikube config set WantUpdateNotification false >> logs/minikube.log 2>&1
+	minikube start --vm-driver=$DRVR --cpus=$CPU >> logs/minikube.log 2>&1
+	minikube addons enable metrics-server >> logs/minikube.log 2>&1
+	minikube addons enable dashboard >> logs/minikube.log 2>&1
 	echo -ne $GREEN
-	echo "SETUP MINIKUBE COMPLETE"
+	echo "complete."
 	echo -ne $WHITE
 
 	# DLD & INSTALL METALLB
-	minikube addons enable metallb
-	kubectl apply -f srcs/metallb_config.yaml
+	echo -ne $BLUE
+	echo -n "Setting up metallb..."
+	echo -ne $WHITE 
+	minikube addons enable metallb > logs/metallb.log 2>&1
+	kubectl apply -f srcs/metallb_config.yaml >> logs/metallb.log 2>&1
 	eval $(minikube docker-env)
 	echo -ne $GREEN
-	echo "SETUP METALLB COMPLETE"
+	echo "complete."
 	echo -ne $WHITE
 }
 
@@ -178,9 +191,17 @@ build_one()
 	echo -n "Building $1 image..."
 	echo -ne $WHITE
 	docker build -t mon${1} srcs/$1/. > logs/imgs_build/${img}.log 2>&1
-	echo -ne $GREEN
-	echo "$1 image built."
-	echo -ne $WHITE
+	ok=$(cat logs/imgs_build/${img}.log | grep "Successfully built")
+	if [ -z "$ok" ];
+	then
+		echo -ne $RED
+		echo "$1 image failed to build."
+		echo -ne $WHITE
+	else
+		echo -ne $GREEN
+		echo "$1 image built."
+		echo -ne $WHITE
+	fi
 }
 
 # BUILDING ALL IMGS FCT
@@ -203,7 +224,21 @@ build_volumes()
 {
 	for vol in ${VOLUMES[*]}
 	do
+		echo -ne $BLUE
+		echo -n "Applying $vol volume config..."
+		echo -ne $WHITE
 		kubectl apply -f srcs/conf/volumes/$vol.yaml > logs/volumes/${vol}.log 2>&1
+		ok=$(cat logs/volumes/${vol}.log | grep "created")
+		if [ -z "$ok" ];
+		then
+			echo -ne $RED
+			echo "$vol volume creation failed."
+			echo -ne $WHITE
+		else
+			echo -ne $GREEN
+			echo "$vol volume creation ok."
+			echo -ne $WHITE
+		fi
 	done
 	echo -ne $GREEN
 	echo "VOLUMES BUILT"
@@ -216,7 +251,21 @@ create_deployments()
 {
 	for dep in ${SERVICES[*]}
 	do
+		echo -ne $BLUE
+		echo -n "Applying $dep deployment config..."
+		echo -ne $WHITE
 		kubectl apply -f srcs/conf/deployment/$dep.yaml > logs/deployment/${dep}.log 2>&1
+		ok=$(cat logs/deployment/${dep}.log | grep "created")
+		if [ -z "$ok" ];
+		then
+			echo -ne $RED
+			echo "$dep deployment creation failed."
+			echo -ne $WHITE
+		else
+			echo -ne $GREEN
+			echo "$dep deployment creation ok."
+			echo -ne $WHITE
+		fi
 	done
 	echo -ne $GREEN
 	echo "DEPLOYMENTS CREATED"
@@ -227,10 +276,40 @@ create_deployments()
 
 create_services()
 {
+	kubectl apply -f srcs/conf/secret/telegraf.yaml > logs/others/telegraf-secret.log 2>&1
 	for serv in ${SERVICES[*]}
 	do
+		echo -ne $BLUE
+		echo -n "Applying $serv service config..."
+		echo -ne $WHITE
 		kubectl apply -f srcs/conf/services/$serv.yaml > logs/services/${serv}.log 2>&1
+		ok=$(cat logs/services/${serv}.log | grep "created")
+		if [ -z "$ok" ];
+		then
+			echo -ne $RED
+			echo "$dep service creation failed."
+			echo -ne $WHITE
+		else
+			echo -ne $GREEN
+			echo "$dep service creation ok."
+			echo -ne $WHITE
+		fi
 	done
+	echo -ne $BLUE
+	echo -n "Applying telegraf config-map..."
+	echo -ne $WHITE
+	kubectl apply -f srcs/telegraf/cfgmap.yaml > logs/others/telegraf.log 2>&1
+	ok=$(cat logs/others/telegraf.log | grep "created")
+	if [ -z "$ok" ];
+	then
+		echo -ne $RED
+		echo " creation failed."
+		echo -ne $WHITE
+	else
+		echo -ne $GREEN
+		echo "$ creation ok."
+		echo -ne $WHITE
+	fi
 	echo -ne $GREEN
 	echo "SERVICES EXPOSED"
 	echo -ne $WHITE
@@ -244,11 +323,6 @@ create_services()
 	# eval $(minikube docker-env)
 # 	docker run -it mon$1 sh
 #   docker exec -ti mon$1 sh
-# }
-
-# shell_in_pod()
-# {
-# see https://kubernetes.io/fr/docs/tasks/debug-application-cluster/get-shell-running-container/
 # }
 
 # alias k='kubectl'
@@ -300,6 +374,27 @@ run()
 	create_services
 
 # opening dashboard :
+	echo "
+	logins :
+	nginx ssh : ssh_admin@172.17.0.200 | 0101
+	wordpress : alienard | alienard ; user1 | user1 ; user2 | user2
+	grafana : admin | admin
+	influxdb : telegraf | telegraf
+	phpmyadmin : root | root
+	ftps : root | 1234
+	
+	to test persistance :
+	k exec deploy/nginx-deploy -- pkill nginx
+	k get deployments.apps
+	
+	to test nginx :
+	curl -l http://172.17.0.200:80
+	
+	to see roles in wordpress : 
+	wp user list --path=/var/www/WP
+
+	to test ftps : open filezila and connect to the server
+	"
 	echo -ne $GREEN
 	echo "OPENING DASHBOARD"
 	echo -ne $WHITE

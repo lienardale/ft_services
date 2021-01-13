@@ -32,6 +32,8 @@ $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['host'] = 'mysql-svc';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
+// $cfg['PmaAbsoluteUri'] = '172.17.0.200/phpmyadmin';
+
 
 /**
  * phpMyAdmin configuration storage settings.

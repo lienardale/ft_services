@@ -1,0 +1,39 @@
+Sending build context to Docker daemon  107.5kB
+Step 1/10 : FROM alpine:3.12
+ ---> 389fef711851
+Step 2/10 : RUN apk update
+ ---> Using cache
+ ---> 95b521ee3d16
+Step 3/10 : RUN apk add grafana --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community --no-cache
+ ---> Running in 9b4cdf69496e
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/community/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+(1/1) Installing grafana (7.3.6-r0)
+Executing grafana-7.3.6-r0.pre-install
+Executing busybox-1.31.1-r19.trigger
+OK: 171 MiB in 15 packages
+Removing intermediate container 9b4cdf69496e
+ ---> 1c77b7854395
+Step 4/10 : ADD grafana.ini /etc/grafana/grafana.ini
+ ---> cb0e09541483
+Step 5/10 : COPY provisioning/Dashboards /var/lib/grafana/dashboards/
+ ---> e75d13fffd78
+Step 6/10 : COPY dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards/
+ ---> f636fead81bf
+Step 7/10 : COPY provisioning/datasources/influx.yaml /usr/share/grafana/conf/provisioning/datasources/
+ ---> a15aebe517a6
+Step 8/10 : RUN mkdir -p /usr/share/grafana
+ ---> Running in 3863532016ee
+Removing intermediate container 3863532016ee
+ ---> a19b22c91c49
+Step 9/10 : EXPOSE 3000
+ ---> Running in 512f9b40bc0f
+Removing intermediate container 512f9b40bc0f
+ ---> 5c909415f27b
+Step 10/10 : ENTRYPOINT grafana-server -config /etc/grafana.ini -homepath /usr/share/grafana
+ ---> Running in 85510717b8f1
+Removing intermediate container 85510717b8f1
+ ---> 644f49c51e67
+Successfully built 644f49c51e67
+Successfully tagged mongrafana:latest

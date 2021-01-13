@@ -23,7 +23,8 @@ RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
 
 # Setup SSH
 RUN ssh-keygen -A && adduser -D ssh_admin && echo "ssh_admin:0101" | chpasswd
-# to test -> ssh ssh_admin@192.168.99.124
+# to test -> ssh ssh_admin@172.17.0.200 | 0101
+
 EXPOSE 80 443 22
 
 CMD ./run.sh

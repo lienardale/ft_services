@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb-deploy
+  labels:
+    app: influxdb
+spec:
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: influxdb
+  template:
+    metadata: 
+      labels: 
+        app: influxdb
+    spec:
+      containers:
+        - name: influxdb
+          image: moninfluxdb:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort : 8086
+          volumeMounts: 
+            - mountPath: /var/lib/influxdb
+              name: var-lib-influxdb
+      restartPolicy: Always
+      volumes:
+      - name: var-lib-influxdb
+        persistentVolumeClaim:
+          claimName: influxdb-pvc
