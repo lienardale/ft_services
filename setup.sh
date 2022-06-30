@@ -315,7 +315,7 @@ create_services()
 	echo -ne $WHITE
 }
 
-# kubectl run my_shell -it --image busybox -- bash : lance shell sur un pod k8s
+# kubectl run my_shell -it --image busybox -- bash : runs shell on k8s pod
 # k exec -ti $pod -- sh
 
 # run_one_build()
